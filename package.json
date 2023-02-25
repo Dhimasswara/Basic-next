@@ -10,14 +10,22 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@next/font": "13.1.6",
+    "@react-yuki/icons": "^0.0.47",
+    "@react-yuki/ui": "^0.0.44",
     "bootstrap": "^5.2.3",
+    "emotion-theming": "^11.0.0",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-id-swiper": "^4.0.0",
+    "react-slick": "^0.29.0",
+    "swiper": "^9.0.5"
   }
 }

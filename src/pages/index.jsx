@@ -1,9 +1,9 @@
-import LayoutPage from "@/Components/LayoutPage";
+import LandingPage from "./LandingPage"
 
 export default function Home() {
   return (
     <>
-      <LayoutPage/>
+      <LandingPage/>
     </>
   )
 }

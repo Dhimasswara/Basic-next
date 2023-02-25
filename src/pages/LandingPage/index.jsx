@@ -1,14 +1,14 @@
 import React from "react";
-import LayoutPage from '@/Components/LayoutPage'
+import LayoutPage from '../../Components/LayoutPage/index'
 import button from '../../Components/Navbar/Navbar.module.css'
 import Image from 'next/image'
 import img from '../../Assets/Home/imgSection.png'
 import img2 from '../../Assets/Home/imgSection2.png'
-import SectionPage from '@/Components/Section/LandingPage/SectionPage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import style from './Landing.module.css'
-import SlideCard from "@/Components/SlideCard";
+import SlideCard from '../../Components/SlideCard'
+import SectionPage from "../../Components/Section/LandingPage/SectionPage";
 
 
 const LandingPage = () => {
@@ -97,7 +97,7 @@ const LandingPage = () => {
                 <div className="row my-5 justify-content-center">
                     <h1 className='text-center fw-bolder mb-5'>Their opinion about peworld</h1>
                     <div className="col-lg-12 col-md-12 col-12">
-                        <SlideCard />
+                        <SlideCard/>
                     </div>
                 </div>
             </SectionPage>

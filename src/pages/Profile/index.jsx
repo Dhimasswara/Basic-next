@@ -8,7 +8,7 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 
-const Profile = () => {
+const Profile = () => { 
     return (
         <LayoutPage>
 

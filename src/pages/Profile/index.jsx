@@ -48,7 +48,7 @@ const Profile = () => {
                             <p><FontAwesomeIcon icon={faGithub}/> github.dhimasswara.com </p>
                             <p><FontAwesomeIcon icon={faFacebook}/> Dhimas Pandu Yogaswara</p>
                             <p><FontAwesomeIcon icon={faLinkedin}/> Dhimas Pandu Yogaswara</p>
-
+                            <p><FontAwesomeIcon icon={faLinkedin}/> Dhimas Pandu Yogaswara</p>
                         </div>
                     </div>
                     <div class={`col-8 col-md-8  ${style.rightSide}`}>

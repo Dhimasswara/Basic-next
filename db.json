@@ -1,0 +1,23 @@
+{
+  "user": [
+    {
+      "name": "Rizal",
+      "email": "rizal@gmail.com",
+      "perusahaan": "Tokopedia",
+      "jabatan": "Manager",
+      "password": "123",
+      "phone_number": "081234",
+      "id": 1
+    },
+    {
+      "email": "rizal@gmail.com",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "email": "dhimasswara08@gmail.com",
+      "password": "123",
+      "id": 3
+    }
+  ]
+}

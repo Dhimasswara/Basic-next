@@ -1,4 +1,4 @@
-import LayoutLoginProfile from '@/Components/LayoutPage/LayoutLoginProfil'
+import LayoutPage from '@/Components/LayoutPage/LayoutPage'
 import SectionPage from '@/Components/Section/LandingPage/SectionPage'
 import Image from 'next/image'
 import style from './style.module.css'
@@ -7,28 +7,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import img1 from '../../Assets/Profile/porto-1.png'
-import MainProfile from '@/Components/LayoutProfile/MainProfile'
-import LeftSide from '@/Components/LayoutProfile/LeftSide'
-import RightSide from '@/Components/LayoutProfile/RightSide'
-import Experience from '../../Assets/Profile/Experience/icon.png'
 
 
 const Profile = () => {
     return (
-        <LayoutLoginProfile>
+        <LayoutPage>
+
+
             <div className={`${style.strapBrand} `}>
                 <p className='container'></p>
             </div>
             <SectionPage embedSection={style.sectionProfile}>
-                <MainProfile>
-                    <LeftSide>
+                <div class="row justify-content-between">
+                    <div class={`col-10 col-md-3 ${style.leftSide}`}>
                         <div className="profileDesc">
                             <div className={` mx-auto pb-4 pt-2 ${style.picture}`}>
                                 <Image src={img} className='img-thumbnail rounded-circle'></Image>
                             </div>
                             <h5 className='fw-bolder'>Dhimas Pandu Y</h5>
                             <span className={style.work}>Front End Developer</span>
-                            <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} /> Lorem Ipsum</p>
+                            <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px"}}/> Lorem Ipsum</p>
                             <span className={style.worker}>Freelancer</span>
                             <p className={style.bio}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
                             <div className="hireButton d-grid">
@@ -53,10 +51,8 @@ const Profile = () => {
                             <p><FontAwesomeIcon icon={faLinkedin} /> Dhimas Pandu Yogaswara</p>
                             <p><FontAwesomeIcon icon={faLinkedin} /> Dhimas Pandu Yogaswara</p>
                         </div>
-
-                    </LeftSide>
-
-                    <RightSide>
+                    </div>
+                    <div class={`col-8 col-md-8  ${style.rightSide}`}>
 
                         <ul className="nav nav-pills mb-3 justify-content-start" id="pills-tab" role="tablist">
                             <li className="nav-item" role="presentation">
@@ -83,7 +79,7 @@ const Profile = () => {
                                     <div class="col-12 col-md-6 col-lg-4 text-center">
                                         <div class="p-3 border bg-light">
                                             <Image src={img1} className={style.img} />
-                                            <p>Solusi</p>
+                                            <p>Project management web</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4 text-center">
@@ -97,39 +93,18 @@ const Profile = () => {
                             <div className="tab-pane fade" id="pills-Seller" role="tabpanel" aria-labelledby="pills-Seller-tab" tabindex="0">
                                 <div class="row jusitfy-content-center">
                                     <div class="col-12 text-center">
-                                        <div className={`${style.rowExperience} row `}>
-                                            <div className="col-2">
-                                                <Image className='img-fluid' src={Experience}></Image>
-                                            </div>
-                                            <div className="col-9 text-start">
-                                                <p className='fw-bolder'>Engineer</p>
-                                                <p className>Tokopedia</p>
-                                                <p className='text-secondary mb-4'>July 2019 - January 2020</p>
-                                                <p className={style.exDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum non tenetur omnis nobis dolores aliquid quod facere ipsum. Provident, voluptate asperiores enim dolorum, sed omnis alias cumque officiis vitae dolore distinctio. Accusantium sunt soluta quam porro, saepe maiores? Reiciendis dolores quis dolore doloremque consequatur commodi ipsam provident id ea. </p>
-                                                <hr />
-                                            </div>
-                                        </div>
-                                        <div className={`${style.rowExperience} row `}>
-                                            <div className="col-2">
-                                                <Image className='img-fluid' src={Experience}></Image>
-                                            </div>
-                                            <div className="col-9 text-start">
-                                                <p className='fw-bolder'>Engineer</p>
-                                                <p className>Tokopedia</p>
-                                                <p className='text-secondary mb-4'>July 2019 - January 2020</p>
-                                                <p className={style.exDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum non tenetur omnis nobis dolores aliquid quod facere ipsum. Provident, voluptate asperiores enim dolorum, sed omnis alias cumque officiis vitae dolore distinctio. Accusantium sunt soluta quam porro, saepe maiores? Reiciendis dolores quis dolore doloremque consequatur commodi ipsam provident id ea. </p>
-                                                <hr />
-                                            </div>
+                                        <div class="p-3 border ">
+                                            <span>Cant find anything 😥</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </RightSide>
-                </MainProfile>
 
+                    </div>
+                </div>
             </SectionPage>
-        </LayoutLoginProfile>
+        </LayoutPage>
     )
 }
 

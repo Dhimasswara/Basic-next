@@ -1,15 +1,13 @@
-import Link from 'next/link'
+import { faMessage, faBuilding, faMailBulk, faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBuilding, faFireExtinguisher, faToggleOn } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
+import React from 'react'
+import Link from 'next/link'
 import style from './Navbar.module.css'
+import img from '../../Assets/Home/imgSection2.png'
 import { useState, useEffect } from 'react'
 
-
-const Navbar = () => {
-
-    const clearLocal = () => {
-        localStorage.clear()
-    }
+const NavbarProfile = () => {
 
     const [item, setItem] = useState(['']);
     console.log(item);
@@ -50,7 +48,9 @@ const Navbar = () => {
 
                     </div>
                 </nav>
+
                 :
+
                 <nav className="navbar bg-body-tertiary navbar-expand-lg">
                     <div className="container">
                         <Link className="navbar-brand" href={'/LandingPage'}>
@@ -64,11 +64,14 @@ const Navbar = () => {
                             <i className="fa-brands fa-xing"></i>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <div className='d-grid d-lg-block ms-lg-auto mt-4 mt-md-0'>
-                                <Link href={'/Login'} onClick={clearLocal} className={`btn btn-outline-success me-md-2 me-0 mb-2 mb-lg-0 ${style.btn1}`} type="button">Logout</Link>
+                            <div className='ms-lg-auto mt-4 mt-md-0 d-flex justify-content-center justify-content-md-end'>
+                                <button className={`me-5 ${style.message}`}><FontAwesomeIcon icon={faMailBulk} /> </button>
+                                <button className={`me-5 ${style.notif}`}><FontAwesomeIcon icon={faBell} /> </button>
+                                <div className={style.profile}>
+                                    <Image className={`${style.img} img-fluid`} src={img} />
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </nav>
 
@@ -78,4 +81,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default NavbarProfile

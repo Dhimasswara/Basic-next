@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutPage from '../../Components/LayoutPage/index'
+import LayoutPage from '../../Components/LayoutPage/LayoutPage'
 import button from '../../Components/Navbar/Navbar.module.css'
 import Image from 'next/image'
 import img from '../../Assets/Home/imgSection.png'
@@ -94,7 +94,7 @@ const LandingPage = () => {
             </SectionPage>
 
             <SectionPage embedSection={style.sectionFour}>
-                <div className="row my-5 justify-content-center">
+                <div className="row my-5 justify-content-center align-items-center">
                     <h1 className='text-center fw-bolder mb-5'>Their opinion about peworld</h1>
                     <div className="col-lg-12 col-md-12 col-12">
                         <SlideCard/>
@@ -108,10 +108,10 @@ const LandingPage = () => {
                     <div className="col-12">
                         <div className={style.box}>
                             <div className="row justify-content-around d-flex align-items-center h-100">
-                                <div className="col-4 text-light">
+                                <div className="col-md-4 col-12 ps-4 pt-5 pt-md-0 text-light">
                                     <h4>Lorem Ipsum Dolar Sit Amet</h4>
                                 </div>
-                                <div className="col-4 text-end">
+                                <div className="col-md-4 col-12 ps-4 text-start pb-5 pb-md-0 text-md-end">
                                     <button className="btn btn-light">
                                         Mulai dari sekarang
                                     </button>

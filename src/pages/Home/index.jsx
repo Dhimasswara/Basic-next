@@ -1,4 +1,4 @@
-import LayoutPage from '@/Components/LayoutPage'
+import LayoutPage from '@/Components/LayoutPage/LayoutPage'
 import SectionPage from '@/Components/Section/LandingPage/SectionPage'
 import React from 'react'
 import style from './style.module.css'
@@ -124,7 +124,7 @@ const index = () => {
                 </div>
 
                 <div className="row justify-content-center mb-5 mt-2">
-                    <div className="col-10  d-grid justify-content-center" >
+                    <div className="col-5  d-grid justify-content-center bg-success" >
                         <nav aria-label="Page navigation example">
                             <ul className={`pagination ${style.pagination}`}>
                                 <li className={`page-item ${style.pageItem} me-2`}>
@@ -134,7 +134,6 @@ const index = () => {
                                 </li>
                                 <li className="page-item me-2"><a className="page-link" href="#">1</a></li>
                                 <li className="page-item me-2"><a className="page-link" href="#">2</a></li>
-                                <li className="page-item me-2"><a className="page-link" href="#">3</a></li>
                                 <li className="page-item me-2">
                                     <a className="page-link" href="#" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>

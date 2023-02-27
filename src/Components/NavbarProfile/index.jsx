@@ -10,13 +10,11 @@ import { useState, useEffect } from 'react'
 const NavbarProfile = () => {
 
     const [item, setItem] = useState(['']);
-    console.log(item);
 
     useEffect(() => {
         const localLength = localStorage.getItem('user');
         if (!localLength) {
             console.log(localLength);
-
         } else {
             setItem(localLength)
         }

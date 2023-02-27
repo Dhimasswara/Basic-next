@@ -9,7 +9,6 @@ import { faEye, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 
 const index = () => {
     const baseURL = "http://localhost:3000/user";
@@ -17,22 +16,23 @@ const index = () => {
     const [skill, setSkills] = React.useState('');
    
 
-    console.log(post);
-
     useEffect(() => {
       axios.get(baseURL)
       .then((response) => {
-        console.log(`test ${response.data}`);
         setPost(response.data);
       });
     }, []);
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:3000/skills/', { id_user : id})
-    //     .then((response) => {
-    //       setSkills(response.data);
-    //     });
-    //   }, []);
+    const getAllSkillsById = async () => {
+        await axios.get('http://localhost:3000/skills' )
+        .then((response) => {
+            setSkills(response.data);
+        });
+    }
+
+    useEffect(() => {
+        getAllSkillsById()
+      }, []);
 
 
     if(!post) return ''

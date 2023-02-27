@@ -66,7 +66,6 @@ const Register = () => {
     }
   }
 
-
   return (
     <AuthLayout title="Halo, Pewpeople!" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.">
      

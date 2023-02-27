@@ -11,9 +11,32 @@ import MainProfile from '@/Components/LayoutProfile/MainProfile'
 import LeftSide from '@/Components/LayoutProfile/LeftSide'
 import RightSide from '@/Components/LayoutProfile/RightSide'
 import Experience from '../../Assets/Profile/Experience/icon.png'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import axios from 'axios'
 
 
 const Profile = () => {
+    
+    const router = useRouter()
+    const { id } = router.query
+
+    const [user, setUser] = useState([])
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:3000/user/${id}`)
+            .then((response) => {
+                setUser(response.data);
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+
+
     return (
         <LayoutLoginProfile>
             <div className={`${style.strapBrand} `}>
@@ -26,9 +49,9 @@ const Profile = () => {
                             <div className={` mx-auto pb-4 pt-2 ${style.picture}`}>
                                 <Image src={img} className='img-thumbnail rounded-circle'></Image>
                             </div>
-                            <h5 className='fw-bolder'>Dhimas Pandu Y</h5>
-                            <span className={style.work}>Front End Developer</span>
-                            <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} /> Lorem Ipsum</p>
+                            <h5 className='fw-bolder'>{user.name}</h5>
+                            <span className={style.work}>{user.jabatan}</span>
+                            <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} />{user.address}</p>
                             <span className={style.worker}>Freelancer</span>
                             <p className={style.bio}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
                             <div className="hireButton d-grid">

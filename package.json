@@ -26,5 +26,9 @@
     "react-id-swiper": "^4.0.0",
     "react-toastify": "^9.1.1",
     "swiper": "^9.0.5"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.2",
+    "json-server-auth": "^2.1.0"
   }
 }

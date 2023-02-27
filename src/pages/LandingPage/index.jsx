@@ -46,15 +46,15 @@ const LandingPage = () => {
                             <Image className={`img-fluid ${style.imgSection2}`} src={img2}></Image>
                         </div>
                     </div>
-                    <div className="col-md-6 col-12 mt-4 mt-md-0">
+                    <div className="col-md-6 col-12 mt-4 mt-md-0 text-center text-md-start text-wrap">
                         <h1 className="fw-bolder">Kenapa harus mencari tallent di peworld</h1>
                         <div className="row mt-4">
                             <div className="col-12">
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Lorem ipsum dolor sit amet. </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Lorem ipsum dolor sit amet. </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Lorem ipsum dolor sit amet. </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Lorem ipsum dolor sit amet. </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Lorem ipsum dolor sit amet. </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#6427AD'}}/> Lorem ipsum dolor sit amet. </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#6427AD'}}/> Lorem ipsum dolor sit amet. </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#6427AD'}}/> Lorem ipsum dolor sit amet. </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#6427AD'}}/> Lorem ipsum dolor sit amet. </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#6427AD'}}/> Lorem ipsum dolor sit amet. </p>
                             </div>
                         </div>
                     </div>
@@ -63,22 +63,22 @@ const LandingPage = () => {
 
             <SectionPage embedSection={style.sectionThree}>
                 <div className="row my-5 flex-column-reverse flex-md-row">
-                    <div className="col-12 col-md-6">
-                        <h1 className="fw-bolder">Skill Talent</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta modi, impedit nobis vitae commodi fuga.</p>
+                    <div className="col-12 col-md-6 ">
+                        <h1 className="fw-bolder text-center text-md-start text-wrap">Skill Talent</h1>
+                        <p className="text-center text-md-start text-wrap">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta modi, impedit nobis vitae commodi fuga.</p>
                         <div className="row mt-4">
                             <div className="col-6">
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Golang </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Java </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> HTML </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Javascript </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Python </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#F1D81B'}}/> Java </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#F1D81B'}}/> Golang </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#F1D81B'}}/> HTML </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#F1D81B'}}/> Javascript </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#F1D81B'}}/> Python </p>
                             </div>
                             <div className="col-6">
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> PHP </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Ruby </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Sephire </p>
-                                <p><FontAwesomeIcon icon={faCheckCircle} /> Lorem ipsum dolor sit amet. </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#F1D81B'}}/> PHP </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#F1D81B'}}/> Ruby </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#F1D81B'}}/> Sephire </p>
+                                <p><FontAwesomeIcon icon={faCheckCircle} style={{color: '#F1D81B'}}/> Lorem ipsum dolor sit amet. </p>
 
                             </div>
                         </div>

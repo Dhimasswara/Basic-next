@@ -64,7 +64,7 @@
 
 .seeProfil {
     background-color: #5E50A1 !important;
-    color: white;
+    color: white !important;
 }
 .seeProfil:hover {
     background-color: transparent !important;

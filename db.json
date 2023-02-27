@@ -1,22 +1,70 @@
 {
   "user": [
     {
-      "name": "Rizal",
-      "email": "rizal@gmail.com",
-      "perusahaan": "Tokopedia",
-      "jabatan": "Manager",
+      "name": "Jokowi Dodo",
+      "email": "jokowi@gmail.com",
+      "perusahaan": "Republik Indonesia",
+      "jabatan": "Presiden",
       "password": "123",
+      "address": "Jakarta",
       "phone_number": "081234",
       "id": 1
     },
     {
-      "email": "rizal@gmail.com",
+      "name": "Dhimas Pandu Yogaswara",
+      "email": "dhimas@gmail.com",
+      "perusahaan": "Shopee",
+      "jabatan": "Asisstant Founder",
       "password": "123",
+      "address": "Bandung",
+      "phone_number": "081234",
+      "id": 4
+    },
+    {
+      "name": "Andrick Lemar",
+      "email": "andrck@gmail.com",
+      "perusahaan": "Tokopedia",
+      "jabatan": "CEO",
+      "password": "123",
+      "address": "Bogor",
+      "phone_number": "081234",
+      "id": 5
+    },
+    {
+      "name": "Nadhiem Makarim",
+      "email": "nadim@gmail.com",
+      "perusahaan": "Gojek",
+      "jabatan": "CEO",
+      "password": "123",
+      "address": "Jakarta",
+      "phone_number": "081234",
+      "id": 6
+    },
+    {
+      "name": "Erick Tohir",
+      "email": "erick@gmail.com",
+      "perusahaan": "Mahaka Indonesia",
+      "jabatan": "Manager",
+      "password": "123",
+      "address": "Kalimanta",
+      "phone_number": "081234",
+      "id": 7
+    }
+  ],
+  "skills": [
+    {
+      "id_user": 1,
+      "skills": "Python",
+      "id": 1
+    },
+    {
+      "id_user": 1,
+      "skills": "Javascript",
       "id": 2
     },
     {
-      "email": "dhimasswara08@gmail.com",
-      "password": "123",
+      "id_user": 4,
+      "skills": "Javascript",
       "id": 3
     }
   ]

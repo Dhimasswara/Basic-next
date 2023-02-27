@@ -6,10 +6,43 @@ import img from '../../Assets/Home/imgSection.png'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { useEffect } from 'react'
+import Link from 'next/link'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const index = () => {
+    const baseURL = "http://localhost:3000/user";
+    const [post, setPost] = React.useState('');
+    const [skill, setSkills] = React.useState('');
+   
+
+    console.log(post);
+
+    useEffect(() => {
+      axios.get(baseURL)
+      .then((response) => {
+        console.log(`test ${response.data}`);
+        setPost(response.data);
+      });
+    }, []);
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:3000/skills/', { id_user : id})
+    //     .then((response) => {
+    //       setSkills(response.data);
+    //     });
+    //   }, []);
+
+
+    if(!post) return ''
+    // if(!skill) return ''
+
+
     return (
         <LayoutPage>
+            
+
             <div className={`${style.strapBrand} `}>
                 <p className='container'>Top Jobs</p>
             </div>
@@ -24,99 +57,31 @@ const index = () => {
                     <div className="col-12">
                         <div className="card" style={{ width: "100%" }}>
                             <ul className="list-group list-group-flush">
+                                {post.map(users => (
                                 <li className="list-group-item py-3">
                                     <div className="row">
                                         <div className="col-sm-2 col-3 col-lg-1 d-flex align-items-center">
                                             <Image className='img-thumbnail' src={img} style={{ width: "100%", height: "auto", borderRadius: "100%" }}></Image>
                                         </div>
                                         <div className={`col-lg-9 col-9 col-sm-10 ${style.body}`}>
-                                            <h4>Harry Style</h4>
-                                            <span>Hello World</span>
-                                            <p><FontAwesomeIcon icon={faLocationDot} /> Lorem Ipsum</p>
+                                            <h4>{users.name}</h4>
+                                            <span>{users.jabatan}</span>
+                                            <p><FontAwesomeIcon icon={faLocationDot} /> {users.address}</p>
                                             <div className={`d-flex d-block ${style.listSkills}`}>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
+                                                {/* {skill.map(skills => (
+                                                <> */}
+                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Pyhton</p>
+{/*                                         
+                                                </>
+                                                ))} */}
                                             </div>
                                         </div>
                                         <div className="offset-3 offset-sm-2 offset-lg-0 col-5 col-md-2 d-grid justify-content-md-center justify-content-start align-items-center mt-lg-0 mt-2">
-                                            <button className={`btn text-wrap  btn-block ${style.seeProfil}`}><FontAwesomeIcon icon={faEye} /> Profil</button>
+                                            <Link href={`/Profile/${users.id}`} className={`btn text-wrap  btn-block ${style.seeProfil}`}><FontAwesomeIcon icon={faEye} /> Profil</Link>
                                         </div>
                                     </div>
                                 </li>
-                                <li className="list-group-item py-3">
-                                    <div className="row">
-                                        <div className="col-sm-2 col-3 col-lg-1 d-flex align-items-center">
-                                            <Image className='img-thumbnail' src={img} style={{ width: "100%", height: "auto", borderRadius: "100%" }}></Image>
-                                        </div>
-                                        <div className={`col-lg-9 col-9 col-sm-10 ${style.body}`}>
-                                            <h4>Harry Style</h4>
-                                            <span>Hello World</span>
-                                            <p><FontAwesomeIcon icon={faLocationDot} /> Lorem Ipsum</p>
-                                            <div className={`d-flex d-block ${style.listSkills}`}>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                            </div>
-                                        </div>
-                                        <div className="offset-3 offset-sm-2 offset-lg-0 col-5 col-md-2 d-grid justify-content-md-center justify-content-start align-items-center mt-lg-0 mt-2">
-                                            <button className={`btn text-wrap  btn-block ${style.seeProfil}`}><FontAwesomeIcon icon={faEye} /> Profil</button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="list-group-item py-3">
-                                    <div className="row">
-                                        <div className="col-sm-2 col-3 col-lg-1 d-flex align-items-center">
-                                            <Image className='img-thumbnail' src={img} style={{ width: "100%", height: "auto", borderRadius: "100%" }}></Image>
-                                        </div>
-                                        <div className={`col-lg-9 col-9 col-sm-10 ${style.body}`}>
-                                            <h4>Harry Style</h4>
-                                            <span>Hello World</span>
-                                            <p><FontAwesomeIcon icon={faLocationDot} /> Lorem Ipsum</p>
-                                            <div className={`d-flex d-block ${style.listSkills}`}>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                            </div>
-                                        </div>
-                                        <div className="offset-3 offset-sm-2 offset-lg-0 col-5 col-md-2 d-grid justify-content-md-center justify-content-start align-items-center mt-lg-0 mt-2">
-                                            <button className={`btn text-wrap  btn-block ${style.seeProfil}`}><FontAwesomeIcon icon={faEye} /> Profil</button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="list-group-item py-3">
-                                    <div className="row">
-                                        <div className="col-sm-2 col-3 col-lg-1 d-flex align-items-center">
-                                            <Image className='img-thumbnail' src={img} style={{ width: "100%", height: "auto", borderRadius: "100%" }}></Image>
-                                        </div>
-                                        <div className={`col-lg-9 col-9 col-sm-10 ${style.body}`}>
-                                            <h4>Harry Style</h4>
-                                            <span>Hello World</span>
-                                            <p><FontAwesomeIcon icon={faLocationDot} /> Lorem Ipsum</p>
-                                            <div className={`d-flex d-block ${style.listSkills}`}>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                                <p className={`text-wrap btn me-2 ${style.skills}`}>Python</p>
-                                            </div>
-                                        </div>
-                                        <div className="offset-3 offset-sm-2 offset-lg-0 col-5 col-md-2 d-grid justify-content-md-center justify-content-start align-items-center mt-lg-0 mt-2">
-                                            <button className={`btn text-wrap  btn-block ${style.seeProfil}`}><FontAwesomeIcon icon={faEye} /> Profil</button>
-                                        </div>
-                                    </div>
-                                </li>
-
+                                ))}
 
                             </ul>
                         </div>
@@ -124,7 +89,7 @@ const index = () => {
                 </div>
 
                 <div className="row justify-content-center mb-5 mt-2">
-                    <div className="col-5  d-grid justify-content-center bg-success" >
+                    <div className="col-5  d-grid justify-content-center" >
                         <nav aria-label="Page navigation example">
                             <ul className={`pagination ${style.pagination}`}>
                                 <li className={`page-item ${style.pageItem} me-2`}>

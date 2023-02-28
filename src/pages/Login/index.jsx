@@ -14,31 +14,20 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-     const res = await axios.post('http://localhost:3000/user', { email, password});
+    const res = await axios.post('http://localhost:3020/login', { email, password});
 
-      localStorage.setItem('user', 'user');
-    
+    localStorage.setItem('user', 'user');
 
-      if (localStorage.getItem('user')) {
+
+    if (localStorage.getItem('user')) {
         
-          alert('success')
-          router.push('/')
+        alert('success')
+        router.push('/')
 
-      } else {
+    } else {
        
-      }
-    // await axios
-    //   .post('http://localhost:3000/user', { email, password})
-    //   .then((response) => {
-  
-    //     console.log(response);
-        
-        
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-  };
+    }
+  }
 
   return (
       <LayoutAuth title="Welcome" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.">

@@ -56,10 +56,13 @@
 }
 .listSkills p {
     font-size: 12px !important;
-    background-color: rgba(251, 176, 23, 0.67);
+    background-color: rgba(251, 176, 23, 1);
     color: white !important;
     font-weight: 400 !important;
-    border: 2px solid rgba(251, 176, 23, 1);
+    border: 1px solid rgba(251, 176, 23, 1);
+}
+.listSkills p:active {
+    background-color: rgb(255, 170, 0) !important;
 }
 
 .seeProfil {

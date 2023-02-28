@@ -1,4 +1,4 @@
-import { faMessage, faBuilding, faMailBulk, faBell } from '@fortawesome/free-solid-svg-icons'
+import { faBuilding, faMailBulk, faBell, faRightFromBracket, faGear } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import React from 'react'
@@ -7,9 +7,13 @@ import style from './Navbar.module.css'
 import img from '../../Assets/Home/imgSection2.png'
 import { useState, useEffect } from 'react'
 
-const NavbarProfile = () => {
+const NavbarProfile = ({id}) => {
 
     const [item, setItem] = useState(['']);
+
+    const clearLocal = () => {
+        localStorage.clear()
+    }
 
     useEffect(() => {
         const localLength = localStorage.getItem('user');
@@ -25,7 +29,7 @@ const NavbarProfile = () => {
         <>
 
             {item !== 'user' ?
-                <nav className="navbar bg-body-tertiary navbar-expand-lg">
+                <nav className="navbar bg-light shadow navbar-expand-lg">
                     <div className="container">
                         <Link className="navbar-brand" href={'/LandingPage'}>
                             <FontAwesomeIcon
@@ -43,15 +47,14 @@ const NavbarProfile = () => {
                                 <Link href={'/Register'} className={`btn btn-outline-success me-md-2 me-0 ${style.btn1}`} type="button">Daftar</Link>
                             </div>
                         </div>
-
                     </div>
                 </nav>
 
                 :
 
-                <nav className="navbar bg-body-tertiary navbar-expand-lg">
+                <nav className="navbar bg-light navbar-expand-lg">
                     <div className="container">
-                        <Link className="navbar-brand" href={'/LandingPage'}>
+                        <Link className="navbar-brand" href={'/'}>
                             <FontAwesomeIcon
                                 icon={faBuilding}
                                 style={{ marginRight: "10px", fontSize: 25, color: '#5E50A1' }}
@@ -65,8 +68,17 @@ const NavbarProfile = () => {
                             <div className='ms-lg-auto mt-4 mt-md-0 d-flex justify-content-center justify-content-md-end'>
                                 <button className={`me-5 ${style.message}`}><FontAwesomeIcon icon={faMailBulk} /> </button>
                                 <button className={`me-5 ${style.notif}`}><FontAwesomeIcon icon={faBell} /> </button>
-                                <div className={style.profile}>
-                                    <Image className={`${style.img} img-fluid`} src={img} />
+                                <div className="btn-group dropdown-center">
+                                        <Link href={`#`} className={style.profile}>
+                                            <Image className={`${style.img} img-fluid`} src={img} />
+                                        </Link>
+                                        <button type="button" className={`dropdown-toggle  dropdown-toggle-split ${style['dropdown-toggle-split']} ${style.toggleSplit}`} data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span className="visually-hidden">Toggle Dropdown</span>
+                                        </button>
+                                    <ul className={`dropdown-menu ${style.drop}`}>
+                                        <li><Link className="dropdown-item" href={'/Login'} onClick={clearLocal}><FontAwesomeIcon icon={faRightFromBracket} /> Logout</Link></li>
+                                        <li><Link className="dropdown-item" href={`/EditWorker/${id}`}><FontAwesomeIcon icon={faGear} /> Edit Profile</Link></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

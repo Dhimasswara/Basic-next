@@ -11,77 +11,40 @@ import MainProfile from '@/Components/LayoutProfile/MainProfile'
 import LeftSide from '@/Components/LayoutProfile/LeftSide'
 import RightSide from '@/Components/LayoutProfile/RightSide'
 import Experience from '../../Assets/Profile/Experience/icon.png'
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import axios from 'axios'
+import { useRouter } from 'next/router';
 
 
-const Profile = () => {
-    
-    const router = useRouter()
-    const { id } = router.query
-    console.log(id);
+export async function getServerSideProps({params}) {
+    // const { data } = await axios.get(`http://localhost:3020/worker/${params.id}`);
+    // const  {list} = await axios.get(`http://localhost:3020/skills/?id_user=${params.id}`);
+    const data = await axios.get(`http://localhost:3020/worker/${params.id}`);
+    const list = await axios.get(`http://localhost:3020/skills/?id_user=${params.id}`);
 
-    const [user, setUser] = useState([])
-    const [skill, setSkill] = useState([])
-    const [experience, setExperience] = useState([])
-    const [portfolio, setPortfolio] = useState([])
+    if (!data || !list) {
+        return {
+            notFound: true,
+        };
+    }
+    return {
+        props: {
+            worker: data.data, skill: list.data,
+        },
+    };
+}
 
-    const renderUser = async () => {
-       await axios
-            .get(`http://localhost:3020/worker/${id}`)
-            .then((response) => {
-                setUser(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        }
-    
-    useEffect(() => {
-        renderUser()
-    }, [id]);
-  
+const Profile = ({worker, skill}) => {
+    // const router = useRouter();
+    // const { id } = router.query
+    console.log(worker);
+    console.log(skill);
 
-    useEffect(() => {
-        axios
-            .get(`http://localhost:3020/skills/?id_user=${id}`)
-            .then((response) => {
-                setSkill(response.data);
-
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [id]);
-
-    useEffect(() => {
-        axios
-            .get(`http://localhost:3020/portfolio/?id_user=${id}`)
-            .then((response) => {
-                setPortfolio(response.data);
-
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [id]);
-
-    useEffect(() => {
-        axios
-            .get(`http://localhost:3020/experience/?id_user=${id}`)
-            .then((response) => {
-                setExperience(response.data);
-
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [id]);
-
+    if (!worker || !skill) {
+        return <h1>Champion does not exist.</h1>;
+    }
 
     return (
-        <LayoutLoginProfile id={id}>
+        <LayoutLoginProfile>
             <div className={`${style.strapBrand} `}>
                 <p className='container'></p>
             </div>
@@ -92,11 +55,11 @@ const Profile = () => {
                             <div className={` mx-auto pb-4 pt-2 ${style.picture}`}>
                                 <Image src={img} className='img-thumbnail rounded-circle'></Image>
                             </div>
-                            <h5 className='fw-bolder'>{user.name}</h5>
-                            <span className={style.work}>{user.jobdesk}</span>
-                            <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} />{user.place}</p>
-                            <span className={style.worker}>{user.jobdesk}</span>
-                            <p className={style.bio}>{user.Bio}</p>
+                            <h5 className='fw-bolder'>{worker.name}</h5>
+                            <span className={style.work}>{worker.jobdesk}</span>
+                            <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} />{worker.place}</p>
+                            <span className={style.worker}>{worker.jobdesk}</span>
+                            <p className={style.bio}>{worker.Bio}</p>
                             <div className="hireButton d-grid">
                                 <button className={`btn ${style.btn}`}> Hire</button>
                             </div>
@@ -105,9 +68,9 @@ const Profile = () => {
                             <h5 className="fw-bolder">Skills</h5>
                             <div className="listSkills">
                                 {skill?.map(item => (
-                                <>
-                                <p className={`text-wrap btn me-2 mb-2 ${style.skills}`}>{item.skill}</p>
-                                </>
+                                    <>
+                                        <p className={`text-wrap btn me-2 mb-2 ${style.skills}`}>{item.skill}</p>
+                                    </>
                                 ))}
                             </div>
                         </div>
@@ -139,21 +102,21 @@ const Profile = () => {
                         <div className="tab-content" id="pills-tabContent">
                             <div className="tab-pane fade show active" id="pills-Customer" role="tabpanel" aria-labelledby="pills-Customer-tab" tabindex="0">
                                 <div className="row g-2">
-                                    {portfolio.map(ex => (
+                                    {/* {portfolio.map(ex => (
                                     <div className="col-12 col-md-6 col-lg-4 text-center">
                                         <div className="px-3 pt-3 border bg-body-tertiary">
                                             <Image src={img1} className={style.img} />
                                             <p className='pt-4'>{ex.porfolio}</p>
                                         </div>
                                     </div>
-                                    ))}
-   
+                                    ))} */}
+
                                 </div>
                             </div>
                             <div className="tab-pane fade" id="pills-Seller" role="tabpanel" aria-labelledby="pills-Seller-tab" tabindex="0">
                                 <div className="row jusitfy-content-center">
                                     <div className="col-12 text-center">
-                                        {experience?.map(ex => (
+                                        {/* {experience?.map(ex => (
                                         <div className={`${style.rowExperience} row `}>
                                             <div className="col-2">
                                                 <Image className='img-fluid' src={Experience} alt=""></Image>
@@ -166,7 +129,7 @@ const Profile = () => {
                                                 <hr />
                                             </div>
                                         </div>
-                                        ))}
+                                        ))} */}
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +139,7 @@ const Profile = () => {
 
             </SectionPage>
         </LayoutLoginProfile>
-    )
-}
 
-export default Profile
+    );
+};
+export default Profile;

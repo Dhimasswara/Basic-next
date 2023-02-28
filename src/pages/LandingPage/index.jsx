@@ -108,10 +108,10 @@ const LandingPage = () => {
                     <div className="col-12">
                         <div className={style.box}>
                             <div className="row justify-content-around d-flex align-items-center h-100">
-                                <div className="col-md-4 col-12 ps-4 pt-5 pt-md-0 text-light">
+                                <div className="col-md-4 col-12 ps-5 pt-5 pt-md-0 text-light">
                                     <h4>Lorem Ipsum Dolar Sit Amet</h4>
                                 </div>
-                                <div className="col-md-4 col-12 ps-4 text-start pb-5 pb-md-0 text-md-end">
+                                <div className="col-md-4 col-12 ps-5 text-start pb-5 pb-md-0 text-md-end">
                                     <button className="btn btn-light">
                                         Mulai dari sekarang
                                     </button>

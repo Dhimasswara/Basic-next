@@ -1,77 +1,272 @@
 {
-  "user": [
+  "worker": [
     {
-      "name": "Jokowi Dodo",
-      "email": "jokowi@gmail.com",
-      "perusahaan": "Republik Indonesia",
-      "jabatan": "Presiden",
-      "password": "123",
-      "address": "Jakarta",
-      "phone_number": "081234",
+      "name": "Dhimasswara",
+      "jobdesk": "FrontEnd Developer",
+      "place": "Indonesia, Bekasi",
+      "workplace": "Tokopedia Jakarta",
+      "Bio": "Saya adalah seorang FrontEnd developer yang bekerja pada sebuah perusahaan startup di Indonesia, saya memiliki kemampuan untuk membaca sebuah UI untuk di convert kedalam sebuah code yang berbentuk project website",
       "id": 1
     },
     {
-      "name": "Dhimas Pandu Yogaswara",
-      "email": "dhimas@gmail.com",
-      "perusahaan": "Shopee",
-      "jabatan": "Asisstant Founder",
-      "password": "123",
-      "address": "Bandung",
-      "phone_number": "081234",
+      "name": "Mark Zukenberg",
+      "jobdesk": "CEO Facebook",
+      "place": "California, Amerika Serikat",
+      "workplace": "Office Facebook Company",
+      "Bio": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
+      "id": 2
+    },
+    {
+      "name": "Bill Gates",
+      "jobdesk": "CEO Microsoft",
+      "place": "California, Amerika Serikat",
+      "workplace": "Office Microsoft Company",
+      "Bio": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
+      "id": 3
+    },
+    {
+      "name": "Steve Jobs",
+      "jobdesk": "Founder Apple",
+      "place": "California, Amerika Serikat",
+      "workplace": "Office Microsoft Company",
+      "Bio": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
       "id": 4
     },
     {
-      "name": "Andrick Lemar",
-      "email": "andrck@gmail.com",
-      "perusahaan": "Tokopedia",
-      "jabatan": "CEO",
-      "password": "123",
-      "address": "Bogor",
-      "phone_number": "081234",
+      "name": "Brendan Eich",
+      "jobdesk": "Computer Programmer",
+      "place": "Silicon Valley, US",
+      "workplace": "Office Microsoft Company",
+      "Bio": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
       "id": 5
-    },
-    {
-      "name": "Nadhiem Makarim",
-      "email": "nadim@gmail.com",
-      "perusahaan": "Gojek",
-      "jabatan": "CEO",
-      "password": "123",
-      "address": "Jakarta",
-      "phone_number": "081234",
-      "id": 6
-    },
-    {
-      "name": "Erick Tohir",
-      "email": "erick@gmail.com",
-      "perusahaan": "Mahaka Indonesia",
-      "jabatan": "Manager",
-      "password": "123",
-      "address": "Kalimanta",
-      "phone_number": "081234",
-      "id": 7
-    },
-    {
-      "email": "dhimaspanduyoga@gmail.com",
-      "password": "123",
-      "id": 8
     }
   ],
   "skills": [
     {
+      "skill": "Javascript",
       "id_user": 1,
-      "skills": "Python",
       "id": 1
     },
     {
+      "skill": "Python",
       "id_user": 1,
-      "skills": "Javascript",
       "id": 2
     },
     {
-      "id_user": 4,
-      "skills": "Javascript",
+      "skill": "PHP",
+      "id_user": 1,
       "id": 3
+    },
+    {
+      "skill": "HTML",
+      "id_user": 1,
+      "id": 4
+    },
+    {
+      "skill": "ReactJS",
+      "id_user": 1,
+      "id": 5
+    },
+    {
+      "skill": "ExpressJS",
+      "id_user": 1,
+      "id": 6
+    },
+    {
+      "skill": "Bootstrap5",
+      "id_user": 1,
+      "id": 7
+    },
+    {
+      "skill": "Microsoft Tools",
+      "id_user": 2,
+      "id": 8
+    },
+    {
+      "skill": "C++",
+      "id_user": 2,
+      "id": 9
+    },
+    {
+      "skill": "Data Analyst",
+      "id_user": 2,
+      "id": 10
+    },
+    {
+      "skill": "Leading",
+      "id_user": 2,
+      "id": 11
+    },
+    {
+      "skill": "Business",
+      "id_user": 2,
+      "id": 12
+    },
+    {
+      "skill": "React Expert",
+      "id_user": 2,
+      "id": 13
+    },
+    {
+      "skill": "Microsoft Programming",
+      "id_user": 3,
+      "id": 14
+    },
+    {
+      "skill": "Leader",
+      "id_user": 3,
+      "id": 15
+    },
+    {
+      "skill": "Business",
+      "id_user": 3,
+      "id": 16
+    },
+    {
+      "skill": "Innovationg",
+      "id_user": 3,
+      "id": 17
+    },
+    {
+      "skill": "Problem Solving",
+      "id_user": 3,
+      "id": 18
+    },
+    {
+      "skill": "Motivation Skills",
+      "id_user": 3,
+      "id": 19
+    },
+    {
+      "skill": "Apple Models",
+      "id_user": 4,
+      "id": 20
+    },
+    {
+      "skill": "Design Future",
+      "id_user": 4,
+      "id": 21
+    },
+    {
+      "skill": "Futuristic",
+      "id_user": 4,
+      "id": 22
+    },
+    {
+      "skill": "Coaching",
+      "id_user": 4,
+      "id": 23
+    },
+    {
+      "skill": "C++",
+      "id_user": 4,
+      "id": 24
+    },
+    {
+      "skill": "Java",
+      "id_user": 4,
+      "id": 25
+    },
+    {
+      "skill": "Pyhton",
+      "id_user": 4,
+      "id": 26
+    },
+    {
+      "skill": "Javascript",
+      "id_user": 5,
+      "id": 27
+    },
+    {
+      "skill": "Typescript",
+      "id_user": 5,
+      "id": 28
+    },
+    {
+      "skill": "NodeJS",
+      "id_user": 5,
+      "id": 29
+    },
+    {
+      "skill": "ExpressJS",
+      "id_user": 5,
+      "id": 30
+    },
+    {
+      "skill": "Golang",
+      "id_user": 5,
+      "id": 31
+    },
+    {
+      "skill": "Java",
+      "id_user": 5,
+      "id": 32
+    },
+    {
+      "skill": "Angular",
+      "id_user": 5,
+      "id": 33
+    },
+    {
+      "skill": "Vue",
+      "id_user": 5,
+      "id": 34
+    },
+    {
+      "skill": "ReactJS",
+      "id_user": 5,
+      "id": 35
+    },
+    {
+      "skill": "NextJS",
+      "id_user": 5,
+      "id": 36
+    },
+    {
+      "skill": "Bootstrap 5",
+      "id_user": "2",
+      "id": 37
     }
   ],
-  "login": []
+  "login": [],
+  "portfolio": [
+    {
+      "porfolio": "Twitter Clone",
+      "id_user": 1,
+      "id": 1
+    },
+    {
+      "porfolio": "Blanja E-Commerce",
+      "id_user": 1,
+      "id": 2
+    },
+    {
+      "porfolio": "Markisak Recipe",
+      "id_user": 1,
+      "id": 3
+    },
+    {
+      "porfolio": "Aplikasi Indihome",
+      "id_user": "2",
+      "id": 4
+    }
+  ],
+  "experience": [
+    {
+      "jobdesk": "Enginer",
+      "workplace": "Shopee",
+      "date": "2020 Jan - 2022 Feb",
+      "desc": " is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
+      "id_user": 1,
+      "id": 1
+    },
+    {
+      "jobdesk": "FrontEnd Developer",
+      "workplace": "Tokopedia",
+      "date": "2021 Des - 2022 Apr",
+      "desc": " is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
+      "id_user": 1,
+      "id": 2
+    }
+  ]
 }

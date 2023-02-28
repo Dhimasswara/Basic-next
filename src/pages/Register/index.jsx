@@ -54,9 +54,7 @@ const Register = () => {
           position: toast.POSITION.TOP_RIGHT
         });
         console.log(response);
-        router.push('/Login')
-        
-        
+        router.push('/Login')  
       })
       .catch((error) => {
         console.log(error);

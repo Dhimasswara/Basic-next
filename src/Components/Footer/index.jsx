@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="container">
             <div className="brand">
                 <div className="row mb-3">
-                    <div className="col-8">
+                    <div className="col-md-8 col-12">
                         <FontAwesomeIcon icon={faBuilding} style={{fontSize: 30, marginRight : "10px"}}/>
                         <span style={{fontSize: 30}} >Peworld</span>
                     </div>

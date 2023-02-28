@@ -1,6 +1,6 @@
-const SectionPage = ({ children, embedSection }) => {
+const SectionPage = ({ children, embedSection, sty }) => {
   return (
-    <div className={`background ${embedSection}`}>
+    <div className={`${embedSection}`} style={sty}>
       <div className="container">
         <div className='row'>
           <div className="col-12">

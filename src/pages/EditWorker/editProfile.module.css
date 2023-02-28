@@ -72,10 +72,10 @@
     border-radius: 5px;
 }
 .radioLabel {
-    height: 50px;
+    padding: 10px;
+    height: auto;
     width: auto;
     cursor: pointer;
-    margin-right: 10px;
 }
 .radioInput[type='radio'] {
     color: #5E50A1 !important;
@@ -90,15 +90,27 @@
     padding: 0 20px 0 0;
 }
 
+.buttonRight {
+    display: none;
+}
+
+
+
 @media only screen and (max-width: 765px) {
     .left {
         margin-bottom: 20px !important;
         width: 90%;
         margin: auto;
     } 
-
+    .buttonLeft {
+        display: none;
+    }
+    .buttonRight {
+        display: block;
+    }
     .right {
         width: 90%;
+        margin-top: -10px !important;
         margin: auto;
     }
 

@@ -26,7 +26,7 @@ const Navbar = () => {
         <>
 
             {item !== 'user' ?
-                <nav className="navbar bg-body-tertiary navbar-expand-lg">
+                <nav className="navbar bg-light navbar-expand-lg sticky-top">
                     <div className="container">
                         <Link className="navbar-brand" href={'/LandingPage'}>
                             <FontAwesomeIcon
@@ -48,7 +48,7 @@ const Navbar = () => {
                     </div>
                 </nav>
                 :
-                <nav className="navbar bg-body-tertiary navbar-expand-lg">
+                <nav className="navbar bg-body-tertiary navbar-expand-lg sticky-top">
                     <div className="container">
                         <Link className="navbar-brand" href={'/LandingPage'}>
                             <FontAwesomeIcon
@@ -57,6 +57,7 @@ const Navbar = () => {
                             />
                             <span className='fw-bolder' style={{ fontSize: 25 }}>Peworld</span>
                         </Link>
+                        <Link className='ps-5' href={'/Home'}><span className='fw-bolder'>Home</span></Link>
                         <button className={`navbar-toggler ${style.navbarToggler}`} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i className="fa-brands fa-xing"></i>
                         </button>

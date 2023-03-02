@@ -6,6 +6,7 @@ import Link from 'next/link'
 import style from './Navbar.module.css'
 import img from '../../Assets/Home/imgSection2.png'
 import { useState, useEffect } from 'react'
+import { faHive } from '@fortawesome/free-brands-svg-icons'
 
 const NavbarProfile = ({id}) => {
 
@@ -33,7 +34,7 @@ const NavbarProfile = ({id}) => {
                     <div className="container">
                         <Link className="navbar-brand" href={'/LandingPage'}>
                             <FontAwesomeIcon
-                                icon={faBuilding}
+                                icon={faHive}
                                 style={{ marginRight: "10px", fontSize: 25, color: '#5E50A1' }}
                             />
                             <span className='fw-bolder' style={{ fontSize: 25 }}>Peworld</span>
@@ -56,7 +57,7 @@ const NavbarProfile = ({id}) => {
                     <div className="container">
                         <Link className="navbar-brand" href={'/'}>
                             <FontAwesomeIcon
-                                icon={faBuilding}
+                                icon={faHive}
                                 style={{ marginRight: "10px", fontSize: 25, color: '#5E50A1' }}
                             />
                             <span className='fw-bolder' style={{ fontSize: 25 }}>Peworld</span>

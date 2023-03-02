@@ -22,6 +22,14 @@
 .cardContent p {
     font-size: 16px;
 }
+.cardContent {
+    height: 100px;
+    cursor: grabbing;
+    overflow-y: scroll !important;
+}
+.cardContent::-webkit-scrollbar{
+    display: none;
+}
 
 
 .card::-webkit-scrollbar {

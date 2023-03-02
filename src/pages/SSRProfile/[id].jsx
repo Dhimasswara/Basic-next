@@ -18,29 +18,32 @@ import { useRouter } from 'next/router';
 export async function getServerSideProps({params}) {
     // const { data } = await axios.get(`http://localhost:3020/worker/${params.id}`);
     // const  {list} = await axios.get(`http://localhost:3020/skills/?id_user=${params.id}`);
-    const data = await axios.get(`http://localhost:3020/worker/${params.id}`);
-    const list = await axios.get(`http://localhost:3020/skills/?id_user=${params.id}`);
+    const data  = await axios.get(`http://localhost:3020/worker/${params.id}`);
+    const list  = await axios.get(`http://localhost:3020/skills/?id_user=${params.id}`);
+    const porto = await axios.get(`http://localhost:3020/portfolio/?id_user=${params.id}`);
+    const expe = await axios.get(`http://localhost:3020/experience/?id_user=${params.id}`);
 
-    if (!data || !list) {
+
+    if (!data || !list || !porto || !expe) {
         return {
             notFound: true,
         };
     }
     return {
         props: {
-            worker: data.data, skill: list.data,
+            worker: data.data, skill: list.data, portfolio : porto.data, experience : expe.data,
         },
     };
 }
 
-const Profile = ({worker, skill}) => {
+const Profile = ({worker, skill, portfolio, experience}) => {
     // const router = useRouter();
     // const { id } = router.query
-    console.log(worker);
-    console.log(skill);
+    // console.log(worker);
+    // console.log(skill);
 
-    if (!worker || !skill) {
-        return <h1>Champion does not exist.</h1>;
+    if (!worker || !skill || !portfolio || !experience) {
+        return <h1>Data not found.</h1>;
     }
 
     return (
@@ -102,21 +105,21 @@ const Profile = ({worker, skill}) => {
                         <div className="tab-content" id="pills-tabContent">
                             <div className="tab-pane fade show active" id="pills-Customer" role="tabpanel" aria-labelledby="pills-Customer-tab" tabindex="0">
                                 <div className="row g-2">
-                                    {/* {portfolio.map(ex => (
+                                    {portfolio.map(ex => (
                                     <div className="col-12 col-md-6 col-lg-4 text-center">
                                         <div className="px-3 pt-3 border bg-body-tertiary">
                                             <Image src={img1} className={style.img} />
                                             <p className='pt-4'>{ex.porfolio}</p>
                                         </div>
                                     </div>
-                                    ))} */}
+                                    ))}
 
                                 </div>
                             </div>
                             <div className="tab-pane fade" id="pills-Seller" role="tabpanel" aria-labelledby="pills-Seller-tab" tabindex="0">
                                 <div className="row jusitfy-content-center">
                                     <div className="col-12 text-center">
-                                        {/* {experience?.map(ex => (
+                                        {experience?.map(ex => (
                                         <div className={`${style.rowExperience} row `}>
                                             <div className="col-2">
                                                 <Image className='img-fluid' src={Experience} alt=""></Image>
@@ -129,7 +132,7 @@ const Profile = ({worker, skill}) => {
                                                 <hr />
                                             </div>
                                         </div>
-                                        ))} */}
+                                        ))}
                                     </div>
                                 </div>
                             </div>

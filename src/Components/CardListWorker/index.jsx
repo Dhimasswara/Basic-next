@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../../Assets/Home/imgSection.png'
+import img from '../../Assets/Home/imgSection5.jpg'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faLocationDot } from '@fortawesome/free-solid-svg-icons'
@@ -32,7 +32,7 @@ const CardWorker = ({name, id, jabatan, address, }) => {
                         <span>{jabatan}</span>
                         <p><FontAwesomeIcon icon={faLocationDot} /> {address}</p>
                         <div className={`d-flex ${style.listSkills}`}>
-                            {skill?.map(listskills => (
+                            {skill?.slice(0, 3).map(listskills => (
                             <>
                                 <p className={`btn text-nowrap me-2 ${style.skills}`}>{listskills?.skill}</p>                                       
                             </>

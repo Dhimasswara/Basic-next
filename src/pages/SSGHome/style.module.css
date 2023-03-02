@@ -22,7 +22,7 @@
     height: 100%;
     padding-right: 140px;
 }
-.btnSearch {
+.searching button {
     font-size: 14px;
     padding: 0 30px 0 30px !important;
     color: white !important;
@@ -36,35 +36,10 @@
     transform: translate(-50%, -50%) !important;
 
 }
-.btnSearch:hover {
+.searching button:hover {
     background-color: white !important;
     color: #5E50A1 !important;
     border: 1px solid #5E50A1 !important;
-}
-.Drop {
-    background-color: transparent !important;
-    z-index: 1200;
-    padding: 0 30px 0 30px !important;
-    border: 1px solid transparent !important;
-    position: absolute;
-    height: 80%;
-    right: 22px;
-    top: 50%;
-    bottom: 50%;
-    transform: translate(-50%, -50%) !important;
-}
-.btnDrop {
-    border: none !important;
-    background-color: transparent !important;
-}
-.garisVertical {
-    border: 1px solid rgb(186, 186, 186);
-    position: absolute;
-    right: 190px;
-    height: 80%;
-    top: 50%;
-    bottom: 50%;
-    transform: translate(-50%, -50%) !important;
 }
 
 

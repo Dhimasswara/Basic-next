@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import style from './slide.module.css'
-import img from '../../Assets/Home/imgSection.png'
+import img from '../../Assets/Home/imgSection5.jpg'
+import axios from "axios";
 
 // Import Swiper styles
 import "swiper/css";
@@ -15,6 +16,20 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper";
 
 export default function App() {
+
+    const [post, setPost] = useState('');
+   
+
+    useEffect(() => {
+      axios.get('http://localhost:3020/worker')
+      .then((response) => {
+        setPost(response.data);
+        console.log(setPost);
+      });
+    }, []);
+
+    if(!post) return '' 
+
     return (
         <>
             <Swiper
@@ -52,6 +67,8 @@ export default function App() {
                 modules={[Navigation, Pagination]}
                 className="mySwiper swiper-container"
             >
+                {post.map(item=> (
+                  console.log(item),
                 <div className="swiper-container">
                     <div className="swiper-wrapper">
                         <SwiperSlide className="swiper-slide">
@@ -59,9 +76,9 @@ export default function App() {
                                 <div>
                                     <Image src={img} className={style.cardImg} />
                                 </div>
-                                <div className={style.cardTitle}>
-                                    <h3>Harry Styles</h3>
-                                    <span>Web Developer</span>
+                                <div className={`mb-5 ${style.cardTitle}`}>
+                                    <h3>{item.name}</h3>
+                                    <span>{item.jobdesk}</span>
                                 </div>
                                 <div className={style.cardContent}>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
@@ -70,42 +87,8 @@ export default function App() {
                         </SwiperSlide>
                     </div>
                 </div>
+                ))}
 
-                <div className="row">
-                    <div className="col-10">
-                        <SwiperSlide className="swiper-slide">
-                            <div className={style.card}>
-                                <div>
-                                    <Image src={img} className={style.cardImg} />
-                                </div>
-                                <div className={style.cardTitle}>
-                                    <h3>Harry Styles</h3>
-                                    <span>Web Developer</span>
-                                </div>
-                                <div className={style.cardContent}>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    </div>
-                </div><div className="row">
-                    <div className="col-10">
-                        <SwiperSlide>
-                            <div className={style.card}>
-                                <div>
-                                    <Image src={img} className={style.cardImg} />
-                                </div>
-                                <div className={style.cardTitle}>
-                                    <h3>Harry Styles</h3>
-                                    <span>Web Developer</span>
-                                </div>
-                                <div className={style.cardContent}>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    </div>
-                </div>
 
 
             </Swiper>

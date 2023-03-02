@@ -1,7 +1,7 @@
 {
   "worker": [
     {
-      "name": "Dhimasswara",
+      "name": "Dhimas Pandu Yogaswara",
       "jobdesk": "FrontEnd Developer",
       "place": "Indonesia, Bekasi",
       "workplace": "Tokopedia Jakarta",
@@ -9,7 +9,7 @@
       "id": 1
     },
     {
-      "name": "Mark Zukenberg",
+      "name": "Mark",
       "jobdesk": "CEO Facebook",
       "place": "California, Amerika Serikat",
       "workplace": "Office Facebook Company",
@@ -228,7 +228,18 @@
       "id": 37
     }
   ],
-  "login": [],
+  "login": [
+    {
+      "email": "dhimasswara08@gmail.com",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "email": "dhimasswara08@gmail.com",
+      "password": "123",
+      "id": 2
+    }
+  ],
   "portfolio": [
     {
       "porfolio": "Twitter Clone",
@@ -249,6 +260,16 @@
       "porfolio": "Aplikasi Indihome",
       "id_user": "2",
       "id": 4
+    },
+    {
+      "porfolio": "Aplikasi Pinjol",
+      "id_user": "1",
+      "id": 5
+    },
+    {
+      "porfolio": "Aplikasi Indihome",
+      "id_user": "2",
+      "id": 6
     }
   ],
   "experience": [
@@ -267,6 +288,14 @@
       "desc": " is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
       "id_user": 1,
       "id": 2
+    },
+    {
+      "jobdesk": "Enginer",
+      "workplace": "Tokopedia",
+      "date": "2018",
+      "desc": "Mantap",
+      "id_user": "2",
+      "id": 3
     }
   ]
 }

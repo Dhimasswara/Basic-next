@@ -9,11 +9,14 @@ import { faLocationDot, faPencil } from '@fortawesome/free-solid-svg-icons'
 import InputFormEdit from '@/Components/Form/InputFormEdit'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
 
 const EditProfile = () => {
 
     const router = useRouter()
     const { id } = router.query
+    const id_user = parseInt(id);
+    console.log(id_user);
 
     const [data, setData] = useState({});
     const [porfolio, setPortfolio] = useState('');
@@ -24,6 +27,7 @@ const EditProfile = () => {
       date: '',
       desc: ''
     })
+
 
     useEffect(() => {
         axios
@@ -61,11 +65,30 @@ const EditProfile = () => {
         e.preventDefault();
 
         if (!porfolio) {
-            alert('please input data')
+            toast.warn('Please input your portfolio!', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         } else {
-            const result = await axios.post(`http://localhost:3020/portfolio`, { porfolio, id_user: id })
+            const result = await axios.post(`http://localhost:3020/portfolio`, {porfolio, id_user})
                 .then(res => {
                     console.log(res.data)
+                    toast.success('Your data has been updated!', {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
                 })
             console.log(result);
         }
@@ -75,26 +98,63 @@ const EditProfile = () => {
         e.preventDefault();
 
         if (!skill) {
-            alert('please input data')
+            toast.warn('Please input your data!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         } else {
             const result = await axios.post(`http://localhost:3020/skills`, { skill: skill, id_user: id })
                 .then(res => {
                     console.log(res.data)
+                    toast.success('Your data has been updated!', {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
                 })
             console.log(result);
         }
     };
 
-    console.log(!experience);
     const handleExperience = async e => {
         e.preventDefault();
 
         if (!experience) {
-            alert('please input data')
+            toast.warn('Please input your data!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         } else {
             const result = await axios.post(`http://localhost:3020/experience`, { ...experience , id_user: id })
                 .then(res => {
                     console.log(res.data)
+                    toast.success('Your data has been updated!', {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
                 })
             console.log(result);
         }
@@ -102,6 +162,7 @@ const EditProfile = () => {
 
     return (
         <LayoutLoginProfile>
+            <ToastContainer/>
             <div className={`${style.strapBrand} `}>
                 <p className='container'></p>
             </div>
@@ -115,16 +176,16 @@ const EditProfile = () => {
                                         <Image src={img} className='img-thumbnail rounded-circle'></Image>
                                         <button style={{ backgroundColor: "white", border: "none", marginTop: "10px" }}><FontAwesomeIcon icon={faPencil} /><span style={{ marginLeft: "10px" }}>Edit</span></button>
                                     </div>
-                                    <h5 className='fw-bolder'>Dhimas Pandu Y</h5>
-                                    <span className={style.work}>Front End Developer</span>
-                                    <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} /> Lorem Ipsum</p>
-                                    <span className={style.worker}>Freelancer</span>
+                                    <h5 className='fw-bolder'>{data.name}</h5>
+                                    <span className={style.work}>{data.jobdesk}</span>
+                                    <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} />{data.place}</p>
+                                    <span className={style.worker}>{data.jobdesk}</span>
                                 </div>
                             </div>
                         </div>
                         <div className={`row ${style.buttonLeft}`}>
                             <div className={`d-grid col-12 ${style.rowTwoLeft}`}>
-                                <button className={`btn mb-2 ${style.btn}`}>Simpan</button>
+                                <button className={`btn mb-2 ${style.btn}`} onClick={handleSubmit}>Simpan</button>
                                 <button className={`btn ${style.btn}`}>Batal</button>
                             </div>
                         </div>
@@ -148,10 +209,10 @@ const EditProfile = () => {
                                         <h3 className='pt-4'>Skill</h3>
                                         <hr className={style.hr} />
                                         <div className="row">
-                                            <div className="col-9 col-md-10">
+                                            <div className="col-12 col-md-9">
                                                 <InputFormEdit type={'no-title'} name={'skill'} placeholder={'Ex: Java'} onchange={(e) => setSkill(e.target.value)} />
                                             </div>
-                                            <div className="col-3 col-md-2 d-grid align-items-center">
+                                            <div className="col-12 col-md-3 mb-4 mb-md-0 d-grid align-items-center">
                                                 <button className='btn btn-warning' style={{ height: "50px" }} onClick={handleSkill}>Simpan</button>
                                             </div>
                                         </div>
@@ -164,10 +225,10 @@ const EditProfile = () => {
                                         <form onSubmit={handleExperience}>
                                         <InputFormEdit type={'text'} title={'Posisi'} name={'jobdesk'} placeholder={'Web Developer'} value={experience.jobdesk} onchange={changeExperience} req={'required'}/>
                                         <div className="row" style={{ marginTop: "-20px", marginBottom: "-20px" }}>
-                                            <div className="col">
+                                            <div className="col-12 col-md-6 ">
                                                 <InputFormEdit type={'text'} title={'Nama perusahaan'} name={'workplace'} placeholder={'PT Harus bisa'} value={experience.workplace} onchange={changeExperience} req={'required'}/>
                                             </div>
-                                            <div className="col">
+                                            <div className="col-12 col-md-6">
                                                 <InputFormEdit type={'text'} title={'Bulan/tahun'} name={'date'} placeholder={'Januari 2018'} value={experience.date} onchange={changeExperience} req={'required'}/>
                                             </div>
                                         </div>

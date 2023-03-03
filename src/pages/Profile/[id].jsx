@@ -4,7 +4,7 @@ import Image from 'next/image'
 import style from './style.module.css'
 import img from '../../Assets/Home/imgSection5.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faLocationDot, faPenFancy, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import img1 from '../../Assets/Profile/porto-1.png'
 import MainProfile from '@/Components/LayoutProfile/MainProfile'
@@ -14,21 +14,31 @@ import Experience from '../../Assets/Profile/Experience/icon.png'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import Delete from '@/Components/ModalDelete/Delete'
+import Edit from '@/Components/ModalEdit'
 
 
 const Profile = () => {
-    
+
     const router = useRouter()
     const { id } = router.query
     console.log(id);
 
+    const [isShow, setIsShow] = useState(false)
     const [user, setUser] = useState([])
     const [skill, setSkill] = useState([])
     const [experience, setExperience] = useState([])
     const [portfolio, setPortfolio] = useState([])
 
+    // function showInput(inputIdComment) {
+    //     const inputComment = document.querySelector(`#input${inputIdComment}`);
+    //     console.log(inputIdComment);
+    //     inputComment.classList.toggle(`d-none`)
+    // }
+
+
     const renderUser = async () => {
-       await axios
+        await axios
             .get(`http://localhost:3020/worker/${id}`)
             .then((response) => {
                 setUser(response.data);
@@ -36,12 +46,12 @@ const Profile = () => {
             .catch((error) => {
                 console.log(error);
             });
-        }
-    
+    }
+
     useEffect(() => {
         renderUser()
     }, [id]);
-  
+
 
     useEffect(() => {
         axios
@@ -105,9 +115,9 @@ const Profile = () => {
                             <h5 className="fw-bolder">Skills</h5>
                             <div className="listSkills">
                                 {skill?.map(item => (
-                                <>
-                                <p className={`text-wrap btn me-2 mb-2 ${style.skills}`}>{item.skill}</p>
-                                </>
+                                    <>
+                                        <p className={`text-wrap btn me-2 mb-2 ${style.skills}`}>{item.skill}</p>
+                                    </>
                                 ))}
                             </div>
                         </div>
@@ -139,33 +149,76 @@ const Profile = () => {
                         <div className="tab-content" id="pills-tabContent">
                             <div className="tab-pane fade show active" id="pills-Customer" role="tabpanel" aria-labelledby="pills-Customer-tab" tabindex="0">
                                 <div className="row g-2">
-                                    {portfolio.map(ex => (
-                                    <div className="col-12 col-md-6 col-lg-4 text-center">
-                                        <div className="px-3 pt-3 border bg-body-tertiary">
-                                            <Image src={img1} className={style.img} />
-                                            <p className='pt-4'>{ex.porfolio}</p>
+                                    {portfolio.map((ex, i) => (
+                                        <div className="col-12 col-md-6 col-lg-4 text-center" key={i}>
+                                            <div className="px-3 pt-3 border bg-body-tertiary position-relative"
+                                                onMouseEnter={() => setIsShow(i)}
+                                                onMouseLeave={() => setIsShow(false)}
+                                            >
+
+                                                {isShow === i &&
+                                                    <div className={`buttonAction `} >
+                                                        <Edit
+                                                            embedClass={style.btnEditPortfolio}
+                                                            id={ex.id}
+                                                        >
+                                                            <FontAwesomeIcon icon={faPenFancy} style={{ fontSize: "15px", padding: "5px 6px 2px 6px" }}></FontAwesomeIcon>
+                                                        </Edit>
+                                                        <Delete 
+                                                            embedClass={style.btnDeletePortfolio} 
+                                                            id={ex.id}
+                                                        >
+                                                            <FontAwesomeIcon icon={faTrash} style={{ fontSize: "15px", padding: "5px 6px 2px 6px" }}></FontAwesomeIcon>
+                                                        </Delete>
+                                                    </div>
+                                                }
+
+                                                <Image src={img1} className={style.img} />
+                                                <p className='pt-4'>{ex.porfolio}</p>
+                                            </div>
                                         </div>
-                                    </div>
                                     ))}
-   
+
                                 </div>
                             </div>
                             <div className="tab-pane fade" id="pills-Seller" role="tabpanel" aria-labelledby="pills-Seller-tab" tabindex="0">
                                 <div className="row jusitfy-content-center">
                                     <div className="col-12 text-center">
-                                        {experience?.map(ex => (
-                                        <div className={`${style.rowExperience} row `}>
-                                            <div className="col-2">
-                                                <Image className='img-fluid' src={Experience} alt=""></Image>
+                                        {experience?.map((ex, i) => (
+                                            <div className={`${style.rowExperience} row `} key={i}
+                                            onMouseEnter={() => setIsShow(i)}
+                                            onMouseLeave={() => setIsShow(false)}
+                                            >
+                                                <div className="col-2">
+                                                    <Image className='img-fluid' src={Experience} alt=""></Image>
+                                                </div>
+                                                <div className="col-9 text-start position-relative"
+                                                
+                                                >
+                                                    <p className='fw-bolder'>{ex.jobdesk}</p>
+                                                    <p className>{ex.workplace}</p>
+                                                    <p className='text-secondary mb-4'>{ex.date}</p>
+                                                    <p className={style.exDescription}>{ex.desc}</p>
+                                                    <hr />
+
+                                                    {isShow === i &&
+                                                        <div className={`buttonAction `} >
+                                                            <Edit
+                                                                embedClass={style.btnEditPortfolio}
+                                                                id={ex.id}
+                                                            >
+                                                                <FontAwesomeIcon icon={faPenFancy} style={{ fontSize: "15px", padding: "5px 6px 2px 6px" }}></FontAwesomeIcon>
+                                                            </Edit>
+                                                            <Delete 
+                                                                embedClass={style.btnDeletePortfolio} 
+                                                                id={ex.id}
+                                                            >
+                                                                <FontAwesomeIcon icon={faTrash} style={{ fontSize: "15px", padding: "5px 6px 2px 6px" }}></FontAwesomeIcon>
+                                                            </Delete>
+                                                        </div>
+                                                    }
+                                                </div>
                                             </div>
-                                            <div className="col-9 text-start">
-                                                <p className='fw-bolder'>{ex.jobdesk}</p>
-                                                <p className>{ex.workplace}</p>
-                                                <p className='text-secondary mb-4'>{ex.date}</p>
-                                                <p className={style.exDescription}>{ex.desc}</p>
-                                                <hr />
-                                            </div>
-                                        </div>
                                         ))}
                                     </div>
                                 </div>

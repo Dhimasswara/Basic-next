@@ -38,7 +38,13 @@ const index = () => {
                     <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className={` ${style.btnSearch} btn btn-outline-success"`} type="submit">Search</button>
-                        <div className={`${style.Drop} dropdown`}>
+                        <select className={`${style.Drop} form-selec `} aria-label="Default select example">
+                            <option selected className={`${style.btnDrop}`}>Sort</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        {/* <div className={`${style.Drop} dropdown`}>
                             <button className={`${style.btnDrop} dropdown btn dropdown-toggle`} type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                                 Sort
                             </button>
@@ -47,7 +53,7 @@ const index = () => {
                                 <li><button className="dropdown-item" type="button">Another action</button></li>
                                 <li><button className="dropdown-item" type="button">Something else here</button></li>
                             </ul>
-                        </div>
+                        </div> */}
                         <div className={style.garisVertical}></div>
                     </form>
                 </div>

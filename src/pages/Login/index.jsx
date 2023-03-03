@@ -18,14 +18,10 @@ const Login = () => {
 
     localStorage.setItem('user', 'user');
 
-
     if (localStorage.getItem('user')) {
         
         alert('success')
         router.push('/')
-
-    } else {
-       
     }
   }
 

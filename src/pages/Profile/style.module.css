@@ -5,11 +5,9 @@
     width: 100%;
     background-color: #5E50A1;
 }
-
 .sectionProfile {
     margin-top: 50px !important;
     margin-bottom: 50px !important;
-
 }
 
 /* Page section size layout */
@@ -21,9 +19,7 @@
     width: 32%;
     height: 100%;
     padding: 20px;
-
 }
-
 .rightSide {
     box-shadow: 5px 7px 21px -8px rgba(103,96,184,0.98);
     background-color: white;
@@ -93,6 +89,46 @@
 }
 
 
+/* Button Edit and Delete Portfolio */
+.btnEditPortfolio {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: none !important;
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 35px;
+    top: 10px;
+    animation: fadeIn 0.5s;
+    transition: 0.3s;
+}
+.btnDeletePortfolio {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: none !important;
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    animation: fadeIn 0.5s;
+    transition: 0.3s;
+}
+
+.btnDeletePortfolio:hover {
+    transform: scale(1.09);
+    background-color: rgb(227, 70, 70) !important;
+    color: white !important;
+}
+.btnEditPortfolio:hover {
+    transform: scale(1.09);
+    background-color: rgb(47, 112, 215) !important;
+    color: white !important;
+}
+
+
 /* Navpills */
 
 .portofolio {
@@ -120,3 +156,13 @@
     }
 
 }
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }

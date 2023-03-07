@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 export const getExperienceByUser = (setExperience, id) => async (dispatch) => {
   try {
     axios
-      .get(`http://localhost:4000/experience/worker/${id}`)
+      .get(`${process.env.API_BACKEND}experience/worker/${id}`)
       .then((response) => {
         setExperience(response.data.data);
       });

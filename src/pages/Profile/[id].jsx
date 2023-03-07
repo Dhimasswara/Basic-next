@@ -53,7 +53,7 @@ const Profile = () => {
                     <LeftSide>
                         <div className="profileDesc">
                             <div className={` mx-auto pb-4 pt-2 ${style.picture}`}>
-                                <Image src={img} className='img-thumbnail rounded-circle'></Image>
+                                <Image crossOrigin='anonymouse' width={150} height={150} src={worker?.image === null ? '' : worker?.image} className='img-thumbnail rounded-circle'></Image>
                             </div>
                             <h5 className='fw-bolder'>{worker?.name}</h5>
                             <span className={style.work}>{worker?.jobdesk}</span>

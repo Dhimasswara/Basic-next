@@ -31,7 +31,7 @@ const EditProfile = () => {
         repo_link: '',
         type_portfolio: 'Aplikasi Mobile',
     });
-    // console.log(worker);
+    console.log(worker);
 
     useEffect(() => {
         dispatch(getDetailWorker(setWorker, id))
@@ -217,7 +217,7 @@ const EditProfile = () => {
                             <div className={`col-12 ${style.rowOneLeft}`}>
                                 <div className="profileDesc">
                                     <div className={` mx-auto pb-4 pt-2 d-flex flex-column ${style.picture}`}>
-                                        <Image src={img} className='img-thumbnail rounded-circle'></Image>
+                                        <Image width={150} height={150} crossOrigin='anonymous' src={worker?.image === null ? '' : worker?.image} className='img-thumbnail rounded-circle'></Image>
                                         <button style={{ backgroundColor: "white", border: "none", marginTop: "10px" }}><FontAwesomeIcon icon={faPencil} /><span style={{ marginLeft: "10px" }}>Edit</span></button>
                                     </div>
                                     <h5 className='fw-bolder'>{worker?.name}</h5>

@@ -71,7 +71,7 @@ export default function App() {
                         <SwiperSlide className="swiper-slide">
                             <div className={style.card}>
                                 <div>
-                                    <Image src={img} className={style.cardImg} />
+                                    <Image crossOrigin="anonymouse" width={150} height={150} src={worker?.image} className={style.cardImg} />
                                 </div>
                                 <div className={`mb-5 ${style.cardTitle}`}>
                                     <h3>{item.name}</h3>

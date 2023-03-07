@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getSkillByUser } from '@/redux/actions/skillAction'
 
 
-const CardWorker = ({name, id, jabatan, address, i }) => {
+const CardWorker = ({name, id, jabatan, address, i, photo }) => {
     const dispatch = useDispatch();
     const [skill, setSkill] = useState([{}]);
 
@@ -25,7 +25,7 @@ const CardWorker = ({name, id, jabatan, address, i }) => {
             <li key={i} className="list-group-item py-3">
                 <div className="row">
                     <div className="col-sm-2 col-3 col-lg-1 d-flex align-items-center">
-                        <Image className='img-thumbnail' src={img} style={{ width: "100%", height: "auto", borderRadius: "100%" }} alt=""></Image>
+                        <Image className='img-thumbnail' crossOrigin='anonymouse' width={150} height={150} src={photo} style={{ width: "100%", height: "auto", borderRadius: "100%" }} alt=""></Image>
                     </div>
                     <div className={`col-lg-9 col-9 col-sm-10 ${style.body}`}>
                         <h4>{name}</h4>

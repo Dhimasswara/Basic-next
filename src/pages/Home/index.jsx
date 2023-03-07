@@ -14,12 +14,18 @@ const index = () => {
     // Redux
     const dispatch = useDispatch();
     const [worker, setWorker] = useState([{}]);
+    const [search, setSearch] = useState();
 
     useEffect(() => {
-    dispatch(getWorkers(setWorker))
-    }, [dispatch])
+        dispatch(getWorkers(setWorker, search))
+    }, [dispatch, search])
 
-    // console.log(worker);
+    const handleSearch = async (e) => {
+        if (e.key === "Enter") {
+            dispatch(getWorkers(search))
+        }
+    };
+
     
 
     // Animations
@@ -37,7 +43,7 @@ const index = () => {
             <SectionPage>
                 <div className={`${style.searching} mt-4 mb-4`} data-aos="zoom-out-down">
                     <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)} onKeyDown={handleSearch} />
                         <button className={` ${style.btnSearch} btn btn-outline-success"`} type="submit">Search</button>
                         <select className={`${style.Drop} form-selec `} aria-label="Default select example">
                             <option selected className={`${style.btnDrop}`}>Sort</option>
@@ -55,6 +61,7 @@ const index = () => {
                             <ul className="list-group list-group-flush">
                                 {worker?.map((users, index) => (
                                     <CardWorker
+                                        photo={users?.image === null ? '' : users?.image}
                                         name={users.name}
                                         address={users.address}
                                         jabatan={users.jobdesk}

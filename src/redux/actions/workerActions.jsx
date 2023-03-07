@@ -2,10 +2,10 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 // get All Recipe
-export const getWorkers = (setWorker) => async (dispatch) => {
+export const getWorkers = (setWorker, search) => async (dispatch) => {
   try {
     axios
-      .get(`http://localhost:4000/workers`)
+      .get(`${process.env.API_BACKEND}workers/?search=${search ? search : ""}`)
       .then((response) => {
         setWorker(response.data.data);
       });
@@ -21,10 +21,13 @@ export const getWorkers = (setWorker) => async (dispatch) => {
 // get detail Worker
 export const getDetailWorker = (setWorker, id) => async (dispatch) => {
   try {
+    console.log(id);
     if(id){
+      console.log(id);
     axios
-      .get(`http://localhost:4000/workers/${id}`)
+      .get(`${process.env.API_BACKEND}workers/${id}`)
       .then((response) => {
+        console.log(response);
         setWorker(response?.data?.data?.[0]);
       });
     dispatch({ type: "GET_DETAIL_WORKER", payload: "success" });
@@ -39,11 +42,22 @@ export const getDetailWorker = (setWorker, id) => async (dispatch) => {
 
 // Update Recipe
 export const updateWorker = (worker, id) => async (dispatch) => {
-  console.log(id);
-  console.log(worker);
   try {
+
+    const token = localStorage.getItem("token");
+    const formData = new FormData();
+    for (let attr in worker) {
+      formData.append(attr, worker[attr]);
+    }
+
     axios
-      .put(`http://localhost:4000/workers/${id}`, worker)
+      .put(`${process.env.API_BACKEND}workers/${id}`, formData, 
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+       })
       .then((res) => {
         console.log(res.data);
         Swal.fire({

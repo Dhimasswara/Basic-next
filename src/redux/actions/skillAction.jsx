@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 export const getSkillByUser = (setSkill, id) => async (dispatch) => {
   try {
     axios
-      .get(`http://localhost:4000/skills/worker/${id}`)
+      .get(`${process.env.API_BACKEND}skills/worker/${id}`)
       .then((response) => {
         setSkill(response.data.data);
       });
@@ -21,7 +21,7 @@ export const getSkillByUser = (setSkill, id) => async (dispatch) => {
 // Create Skills
 export const createSkill =(skill, id) => async (dispatch) => {
     try {
-      axios.post(`http://localhost:4000/skills/addskills/${id}`, {name: skill})
+      axios.post(`${process.env.API_BACKEND}skills/addskills/${id}`, {name: skill})
         .then((res) => {
           console.log(res.data);
           Swal.fire({

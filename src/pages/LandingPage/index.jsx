@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LayoutPage from '../../Components/LayoutPage/LayoutPage'
 import button from '../../Components/Navbar/Navbar.module.css'
 import Image from 'next/image'
@@ -14,7 +14,10 @@ import 'aos/dist/aos.css';
 
 
 
+
 const LandingPage = () => {
+
+
 
     useEffect(() => {
         AOS.init()
@@ -24,7 +27,7 @@ const LandingPage = () => {
     return (
         <LayoutPage>
             <SectionPage embedSection={style.sectionOne}>
-                <div className="main container">
+                <div className="main container ">
                     <div className="row flex-column-reverse flex-md-row">
                         <div className={`col-md-5 col-12 d-grid align-items-center ${style.sectionOneTitle}`} data-aos="fade-right" data-aos-duration="2000">
                             <div className="row">
@@ -47,7 +50,7 @@ const LandingPage = () => {
             </SectionPage>
 
             <SectionPage embedSection={style.sectionTwo}>
-                <div className="row">
+                <div className="row ">
                     <div className="col-md-6 col-12 text-center d-grid justify-content-center" data-aos="flip-left" data-aos-duration="2000">
                         <div className={style.imgWrapper2}>
                             <div className={style.box2} />
@@ -69,8 +72,8 @@ const LandingPage = () => {
                 </div>
             </SectionPage>
 
-            <SectionPage embedSection={style.sectionThree}>
-                <div className="row my-5 flex-column-reverse flex-md-row">
+            {/* <SectionPage embedSection={style.sectionThree}>
+                <div className="row my-5 flex-column-reverse flex-md-row ">
                     <div className="col-12 col-md-6" data-aos="zoom-in" data-aos-duration="2000">
                         <h1 className="fw-bolder text-center text-md-start text-wrap">Skill Talent</h1>
                         <p className="text-center text-md-start text-wrap">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta modi, impedit nobis vitae commodi fuga.</p>
@@ -99,10 +102,10 @@ const LandingPage = () => {
                     </div>
 
                 </div>
-            </SectionPage>
+            </SectionPage> */}
 
             <SectionPage embedSection={style.sectionFour}>
-                <div className="row my-5 justify-content-center align-items-center" >
+                <div className="row my-5 justify-content-center align-items-center " >
                     <h1 className='text-center fw-bolder mb-5' data-aos="fade-up" data-aos-duration="2000">Their opinion about peworld</h1>
                     <div className="col-lg-12 col-md-12 col-12" data-aos="fade-up"
                         data-aos-anchor-placement="center-center">
@@ -113,7 +116,7 @@ const LandingPage = () => {
 
 
             <SectionPage embedSection={style.sectionFive}>
-                <div className="row my-5 justify-content-center d-flex align-items-center h-100">
+                <div className="row my-5 justify-content-center d-flex align-items-center h-100 bg-i">
                     <div className="col-12">
                         <div className={style.box}>
                             <div className="row justify-content-around d-flex align-items-center h-100">

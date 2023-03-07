@@ -3,29 +3,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import style from './Navbar.module.css'
 import { useState, useEffect } from 'react'
 import { faHive } from '@fortawesome/free-brands-svg-icons'
+import { useRouter } from 'next/router'
 
 
 const Navbar = () => {
+
+    const router = useRouter();
+
     const clearLocal = () => {
         localStorage.clear()
+        router.push('/')
     }
 
-    const [item, setItem] = useState(['']);
+    // const [item, setItem] = useState(['']);
+
+    // useEffect(() => {
+    //     const localLength = localStorage.getItem('user');
+    //     setItem(localLength);
+
+    // }, []);
+
+    const [login, setLogin] = useState('');
+    const [profile, setProfile] = useState([]);
 
     useEffect(() => {
-        const localLength = localStorage.getItem('user');
-        if (!localLength) {
-            console.log();
-        } else {
-            setItem(localLength)
-        }
-
-    }, []);
+        setLogin(localStorage.getItem('token'));
+        setProfile(localStorage.getItem('id'));
+    });
 
     return (
         <>
 
-            {item !== 'user' ?
+            {login > 0 ?
                 <nav className="navbar bg-light navbar-expand-lg sticky-top">
                     <div className="container">
                         <Link className="navbar-brand" href={'/LandingPage'}>

@@ -1,6 +1,6 @@
 import InputFormAuth from "@/Components/Form/InputFormAuth";
 import Link from "next/link";
-import style from '../../Components/LayoutAuth/style.module.css'
+import style from '@/Components/LayoutAuth/style.module.css'
 import AuthLayout from "@/Components/LayoutAuth";
 import { useState } from "react";
 import axios from "axios";
@@ -13,10 +13,8 @@ const Register = () => {
   const [data, setData] = useState({
     name: '',
     email: '',
-    company_name: '',
-    position: '',
-    password: '',
     phone: '',
+    password: '',
   });
 
   function checkPasswordMatch(password) {
@@ -49,13 +47,13 @@ const Register = () => {
       e.preventDefault();
       const passwordValidated = await checkPasswordMatch(data.password);
       axios
-      .post('http://localhost:4000/recruiters/register', { ...data, password: passwordValidated})
+      .post('http://localhost:4000/workers/register', { ...data, password: passwordValidated})
       .then((response) => {
         toast.success('Success Registration !', {
           position: toast.POSITION.TOP_RIGHT
         });
         console.log(response);
-        router.push('/Login')  
+        router.push('/authWorker/Login')  
       })
       .catch((error) => {
         console.log(error);
@@ -71,22 +69,13 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <InputFormAuth title="Name" name="name" value={data.name} type="text" onchange={(e) => changeHandler(e)} req={'required'}/>
         <InputFormAuth title="Email Address" value={data.email} name="email" type="text" onchange={(e) => changeHandler(e)} req={'required'} />
-        <InputFormAuth title="Perusahaan" value={data.perusahaan} name="company_name" type="text" onchange={(e) => changeHandler(e)} />
-        <InputFormAuth title="Jabatan" value={data.jabatan} name="position" type="text" onchange={(e) => changeHandler(e)} />
         <InputFormAuth title="No Handphone" value={data.phone_number} name="phone" type="number" onchange={(e) => changeHandler(e)} />
         <InputFormAuth title="Password" name="password" value={data.password} type="password" onchange={(e) => changeHandler(e)} req={'required'}/>
         <InputFormAuth title="Confirm Password" name="confirmPassword" type="password" onchange={(e) => setPasswordConfirm(e.target.value)} req={'required'}/>
 
 
-
-        {/* <div className="form-check mb-3 customCheck">
-          <input className="form-check-input" type="checkbox" value="" id={style.flexCheckDefault} />
-          <label className={`form-check-label ${style.formLabel}`} for={style.flexCheckDefault}>
-            I agree to terms & conditions
-          </label>
-        </div> */}
         <div className="d-grid mb-2 mt-3">
-          <button className={`btn ${style.btn} text-light`} type="submit" /* disabled={!(checkTerms && data.name && data.email && data.password && data.phone_number)} */>
+          <button className={`btn ${style.btn} text-light`} type="submit">
             Register
           </button>
 
@@ -96,7 +85,7 @@ const Register = () => {
       <div className={`loginLink text-center mt-3 ${style.formLabel}`}>
         <p>
           Already have account?{' '}
-          <Link href={'/Login'} style={{ textDecoration: 'none', color: 'rgb(239, 200, 26)' }}>
+          <Link href={'/authWorker/Login'} style={{ textDecoration: 'none', color: 'rgb(239, 200, 26)' }}>
             {' '}
             Log in Here
           </Link>

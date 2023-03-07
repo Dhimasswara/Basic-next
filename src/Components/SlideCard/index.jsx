@@ -4,7 +4,9 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import style from './slide.module.css'
 import img from '../../Assets/Home/imgSection5.jpg'
-import axios from "axios";
+import { getWorkers } from '@/redux/actions/workerActions'
+import { useDispatch } from 'react-redux'
+
 
 // Import Swiper styles
 import "swiper/css";
@@ -17,18 +19,14 @@ import { Navigation, Pagination } from "swiper";
 
 export default function App() {
 
-    const [post, setPost] = useState('');
-   
+    const [worker, setWorker] = useState([{}])
+    const dispatch = useDispatch();
 
     useEffect(() => {
-      axios.get('http://localhost:3020/worker')
-      .then((response) => {
-        setPost(response.data);
-        console.log(setPost);
-      });
-    }, []);
+      dispatch(getWorkers(setWorker))
+  }, [dispatch])
 
-    if(!post) return '' 
+    // if(!post) return '' 
 
     return (
         <>
@@ -67,8 +65,7 @@ export default function App() {
                 modules={[Navigation, Pagination]}
                 className="mySwiper swiper-container"
             >
-                {post.map(item=> (
-                  console.log(item),
+                {worker.map(item=> (
                 <div className="swiper-container">
                     <div className="swiper-wrapper">
                         <SwiperSlide className="swiper-slide">

@@ -1,6 +1,6 @@
 import InputFormAuth from '@/Components/Form/InputFormAuth';
 import Link from 'next/link';
-import style from '../../Components/LayoutAuth/style.module.css'
+import style from '@/Components/LayoutAuth/style.module.css'
 import LayoutAuth from '@/Components/LayoutAuth';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -28,7 +28,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-      const response = await axios.post(`http://localhost:4000/recruiters/login`, { email, password });
+      const response = await axios.post(`http://localhost:4000/workers/login`, { email, password });
       // console.log(response);
       // console.log(response.data.data.token);
 
@@ -39,7 +39,7 @@ const Login = () => {
           icon: "success",
         });
         const token = response.data.data.token;
-        const id = response.data.data.id_recruiter;
+        const id = response.data.data.id_worker;
         const role = response.data.data.role;
         // const image = response.data.data.image;
 
@@ -84,7 +84,7 @@ const Login = () => {
       <div className={`loginLink text-center mt-3 ${style.formLabel}`}>
         <p>
           Don’t have an account?{' '}
-          <Link href={'/Register'} style={{ textDecoration: 'none', color: 'rgb(88, 85, 173)' }}>
+          <Link href={'/authWorker/Register'} style={{ textDecoration: 'none', color: 'rgb(88, 85, 173)' }}>
             {' '}
             Sign Up
           </Link>

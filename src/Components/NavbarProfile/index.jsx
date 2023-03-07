@@ -7,29 +7,43 @@ import style from './Navbar.module.css'
 import img from '../../Assets/Home/imgSection2.png'
 import { useState, useEffect } from 'react'
 import { faHive } from '@fortawesome/free-brands-svg-icons'
+import { useRouter } from 'next/router'
 
 const NavbarProfile = ({id}) => {
 
-    const [item, setItem] = useState(['']);
+
+    const [login, setLogin] = useState('');
+    const [profile, setProfile] = useState([]);
+    const [role, setRole] = useState('')
+    const router = useRouter();
+
+    useEffect(() => {
+        setLogin(localStorage.getItem('token'));
+        setProfile(localStorage.getItem('id'));
+        setRole(localStorage.getItem('role'));
+    });
+
+    // const [item, setItem] = useState(['']);
 
     const clearLocal = () => {
         localStorage.clear()
+        router.push('/')
     }
 
-    useEffect(() => {
-        const localLength = localStorage.getItem('user');
-        if (!localLength) {
-            console.log(localLength);
-        } else {
-            setItem(localLength)
-        }
+    // useEffect(() => {
+    //     const localLength = localStorage.getItem('user');
+    //     if (!localLength) {
+    //         console.log(localLength);
+    //     } else {
+    //         setItem(localLength)
+    //     }
 
-    }, []);
+    // }, []);
 
     return (
         <>
 
-            {item !== 'user' ?
+            {login > 0 ?
                 <nav className="navbar bg-light shadow navbar-expand-lg">
                     <div className="container">
                         <Link className="navbar-brand" href={'/LandingPage'}>
@@ -78,7 +92,11 @@ const NavbarProfile = ({id}) => {
                                         </button>
                                     <ul className={`dropdown-menu ${style.drop}`}>
                                         <li><Link className="dropdown-item" href={'/Login'} onClick={clearLocal}><FontAwesomeIcon icon={faRightFromBracket} /> Logout</Link></li>
-                                        <li><Link className="dropdown-item" href={`/EditWorker/${id}`}><FontAwesomeIcon icon={faGear} /> Edit Profile</Link></li>
+                                        {role === 'recruiter' ?
+                                        <li><Link className="dropdown-item" href={`/EditRecruiter/${profile}`}><FontAwesomeIcon icon={faGear} /> Edit Profile</Link></li>
+                                        : 
+                                        <li><Link className="dropdown-item" href={`/EditWorker/${profile}`}><FontAwesomeIcon icon={faGear} /> Edit Profile</Link></li>
+                                        }
                                     </ul>
                                 </div>
                             </div>

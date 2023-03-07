@@ -6,23 +6,23 @@ import { faEye, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import style from '../../pages/Home/style.module.css'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { getSkillByUser } from '@/redux/actions/skillAction'
 
-const CardWorker = ({name, id, jabatan, address, }) => {
-    const [skill, setSkills] = useState([]);
+
+const CardWorker = ({name, id, jabatan, address, i }) => {
+    const dispatch = useDispatch();
+    const [skill, setSkill] = useState([{}]);
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3020/skills?id_user=${id}`)
-        .then((response) => {
-            setSkills(response.data);
-        });
-    }, [])
+        dispatch(getSkillByUser(setSkill, id))
+    }, [dispatch, id])
     
 
     return (
         <>
-            <li className="list-group-item py-3">
+            <li key={i} className="list-group-item py-3">
                 <div className="row">
                     <div className="col-sm-2 col-3 col-lg-1 d-flex align-items-center">
                         <Image className='img-thumbnail' src={img} style={{ width: "100%", height: "auto", borderRadius: "100%" }} alt=""></Image>
@@ -32,9 +32,9 @@ const CardWorker = ({name, id, jabatan, address, }) => {
                         <span>{jabatan}</span>
                         <p><FontAwesomeIcon icon={faLocationDot} /> {address}</p>
                         <div className={`d-flex ${style.listSkills}`}>
-                            {skill?.slice(0, 3).map(listskills => (
+                            {skill?.slice(0, 3).map((listskills, i) => (
                             <>
-                                <p className={`btn text-nowrap me-2 ${style.skills}`}>{listskills?.skill}</p>                                       
+                                <p key={i} className={`btn text-nowrap me-2 ${style.skills}`}>{listskills?.name_skill}</p>                                       
                             </>
                             ))}
                          

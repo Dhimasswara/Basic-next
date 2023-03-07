@@ -13,84 +13,37 @@ import RightSide from '@/Components/LayoutProfile/RightSide'
 import Experience from '../../Assets/Profile/Experience/icon.png'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import axios from 'axios'
 import Delete from '@/Components/ModalDelete/Delete'
 import Edit from '@/Components/ModalEdit'
+import { useDispatch } from 'react-redux'
+import { getDetailWorker } from '@/redux/actions/workerActions'
+import { getSkillByUser } from '@/redux/actions/skillAction'
+import { getPortfolioByUser } from '@/redux/actions/portfolioAction'
+import { getExperienceByUser } from '@/redux/actions/experienceAction'
+
 
 
 const Profile = () => {
 
     const router = useRouter()
     const { id } = router.query
-    console.log(id);
-
+    const dispatch = useDispatch();
     const [isShow, setIsShow] = useState(false)
-    const [user, setUser] = useState([])
-    const [skill, setSkill] = useState([])
-    const [experience, setExperience] = useState([])
-    const [portfolio, setPortfolio] = useState([])
-
-    // function showInput(inputIdComment) {
-    //     const inputComment = document.querySelector(`#input${inputIdComment}`);
-    //     console.log(inputIdComment);
-    //     inputComment.classList.toggle(`d-none`)
-    // }
-
-
-    const renderUser = async () => {
-        await axios
-            .get(`http://localhost:3020/worker/${id}`)
-            .then((response) => {
-                setUser(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
+    const [worker, setWorker] = useState([{}])
+    const [skill, setSkill] = useState([{}])
+    const [portfolio, setPortfolio] = useState([{}])
+    const [experience, setExperience] = useState([{}])
 
     useEffect(() => {
-        renderUser()
-    }, [id]);
-
-
-    useEffect(() => {
-        axios
-            .get(`http://localhost:3020/skills/?id_user=${id}`)
-            .then((response) => {
-                setSkill(response.data);
-
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [id]);
-
-    useEffect(() => {
-        axios
-            .get(`http://localhost:3020/portfolio/?id_user=${id}`)
-            .then((response) => {
-                setPortfolio(response.data);
-
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [id]);
-
-    useEffect(() => {
-        axios
-            .get(`http://localhost:3020/experience/?id_user=${id}`)
-            .then((response) => {
-                setExperience(response.data);
-
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [id]);
+        dispatch(getDetailWorker(setWorker, id))
+        dispatch(getSkillByUser(setSkill, id))
+        dispatch(getPortfolioByUser(setPortfolio, id))
+        dispatch(getExperienceByUser(setExperience, id))
+    }, [dispatch, id])
 
 
     return (
+
         <LayoutLoginProfile id={id}>
             <div className={`${style.strapBrand} `}>
                 <p className='container'></p>
@@ -102,11 +55,11 @@ const Profile = () => {
                             <div className={` mx-auto pb-4 pt-2 ${style.picture}`}>
                                 <Image src={img} className='img-thumbnail rounded-circle'></Image>
                             </div>
-                            <h5 className='fw-bolder'>{user.name}</h5>
-                            <span className={style.work}>{user.jobdesk}</span>
-                            <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} />{user.place}</p>
-                            <span className={style.worker}>{user.jobdesk}</span>
-                            <p className={style.bio}>{user.Bio}</p>
+                            <h5 className='fw-bolder'>{worker?.name}</h5>
+                            <span className={style.work}>{worker?.jobdesk}</span>
+                            <p className={style.address}><FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} />{worker?.address}</p>
+                            <span className={style.worker}>{worker?.jobdesk}</span>
+                            <p className={style.bio}>{worker?.description}</p>
                             <div className="hireButton d-grid">
                                 <button className={`btn ${style.btn}`}> Hire</button>
                             </div>
@@ -116,7 +69,7 @@ const Profile = () => {
                             <div className="listSkills">
                                 {skill?.map(item => (
                                     <>
-                                        <p className={`text-wrap btn me-2 mb-2 ${style.skills}`}>{item.skill}</p>
+                                        <p className={`text-wrap btn me-2 mb-2 ${style.skills}`}>{item.name_skill}</p>
                                     </>
                                 ))}
                             </div>
@@ -128,7 +81,6 @@ const Profile = () => {
                             <p><FontAwesomeIcon icon={faLinkedin} /> Dhimas Pandu Yogaswara</p>
                             <p><FontAwesomeIcon icon={faLinkedin} /> Dhimas Pandu Yogaswara</p>
                         </div>
-
                     </LeftSide>
 
                     <RightSide>
@@ -149,13 +101,12 @@ const Profile = () => {
                         <div className="tab-content" id="pills-tabContent">
                             <div className="tab-pane fade show active" id="pills-Customer" role="tabpanel" aria-labelledby="pills-Customer-tab" tabindex="0">
                                 <div className="row g-2">
-                                    {portfolio.map((ex, i) => (
+                                    {portfolio?.map((ex, i) => (
                                         <div className="col-12 col-md-6 col-lg-4 text-center" key={i}>
                                             <div className="px-3 pt-3 border bg-body-tertiary position-relative"
                                                 onMouseEnter={() => setIsShow(i)}
                                                 onMouseLeave={() => setIsShow(false)}
                                             >
-
                                                 {isShow === i &&
                                                     <div className={`buttonAction `} >
                                                         <Edit
@@ -164,8 +115,8 @@ const Profile = () => {
                                                         >
                                                             <FontAwesomeIcon icon={faPenFancy} style={{ fontSize: "15px", padding: "5px 6px 2px 6px" }}></FontAwesomeIcon>
                                                         </Edit>
-                                                        <Delete 
-                                                            embedClass={style.btnDeletePortfolio} 
+                                                        <Delete
+                                                            embedClass={style.btnDeletePortfolio}
                                                             id={ex.id}
                                                         >
                                                             <FontAwesomeIcon icon={faTrash} style={{ fontSize: "15px", padding: "5px 6px 2px 6px" }}></FontAwesomeIcon>
@@ -174,11 +125,10 @@ const Profile = () => {
                                                 }
 
                                                 <Image src={img1} className={style.img} />
-                                                <p className='pt-4'>{ex.porfolio}</p>
+                                                <p className='pt-4'>{ex.name_portfolio}</p>
                                             </div>
                                         </div>
                                     ))}
-
                                 </div>
                             </div>
                             <div className="tab-pane fade" id="pills-Seller" role="tabpanel" aria-labelledby="pills-Seller-tab" tabindex="0">
@@ -186,19 +136,23 @@ const Profile = () => {
                                     <div className="col-12 text-center">
                                         {experience?.map((ex, i) => (
                                             <div className={`${style.rowExperience} row `} key={i}
-                                            onMouseEnter={() => setIsShow(i)}
-                                            onMouseLeave={() => setIsShow(false)}
+                                                onMouseEnter={() => setIsShow(i)}
+                                                onMouseLeave={() => setIsShow(false)}
                                             >
                                                 <div className="col-2">
                                                     <Image className='img-fluid' src={Experience} alt=""></Image>
                                                 </div>
                                                 <div className="col-9 text-start position-relative"
-                                                
+
                                                 >
                                                     <p className='fw-bolder'>{ex.jobdesk}</p>
-                                                    <p className>{ex.workplace}</p>
-                                                    <p className='text-secondary mb-4'>{ex.date}</p>
-                                                    <p className={style.exDescription}>{ex.desc}</p>
+                                                    <p className>{ex.company_name}</p>
+                                                    <div className='d-flex'>
+                                                        <p className='text-secondary mb-4'>{ex.date_start}</p>
+                                                        <span className='mx-2'> - </span>
+                                                        <p className='text-secondary mb-4'>{ex.date_end}</p>
+                                                    </div>
+                                                    <p className={style.exDescription}>{ex.description}</p>
                                                     <hr />
 
                                                     {isShow === i &&
@@ -209,8 +163,8 @@ const Profile = () => {
                                                             >
                                                                 <FontAwesomeIcon icon={faPenFancy} style={{ fontSize: "15px", padding: "5px 6px 2px 6px" }}></FontAwesomeIcon>
                                                             </Edit>
-                                                            <Delete 
-                                                                embedClass={style.btnDeletePortfolio} 
+                                                            <Delete
+                                                                embedClass={style.btnDeletePortfolio}
                                                                 id={ex.id}
                                                             >
                                                                 <FontAwesomeIcon icon={faTrash} style={{ fontSize: "15px", padding: "5px 6px 2px 6px" }}></FontAwesomeIcon>
